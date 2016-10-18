@@ -1,0 +1,61 @@
+module mojo_8bitfulladder (
+    input a[8],
+    input b[8],
+    input alufn0,
+    output sum[8],
+    output z,
+    output v,
+    output n
+  ) {
+  
+  mojo_fullAdder adder0;
+  mojo_fullAdder adder1;
+  mojo_fullAdder adder2;
+  mojo_fullAdder adder3;
+  mojo_fullAdder adder4;
+  mojo_fullAdder adder5;
+  mojo_fullAdder adder6;
+  mojo_fullAdder adder7;
+
+  always {
+    adder0.a[0] = a[0];
+    adder1.a[0] = a[1];
+    adder2.a[0] = a[2];
+    adder3.a[0] = a[3];
+    adder4.a[0] = a[4];
+    adder5.a[0] = a[5];
+    adder6.a[0] = a[6];
+    adder7.a[0] = a[7];
+    
+    adder0.a[1] = b[0];
+    adder1.a[1] = b[1];
+    adder2.a[1] = b[2];
+    adder3.a[1] = b[3];
+    adder4.a[1] = b[4];
+    adder5.a[1] = b[5];
+    adder6.a[1] = b[6];
+    adder7.a[1] = b[7];
+    
+    adder0.a[2] = alufn0;
+    adder1.a[2] = adder0.carry;
+    adder2.a[2] = adder1.carry;
+    adder3.a[2] = adder2.carry;
+    adder4.a[2] = adder3.carry;
+    adder5.a[2] = adder4.carry;
+    adder6.a[2] = adder5.carry;
+    adder7.a[2] = adder6.carry;
+    
+    sum[0] = adder0.sum;
+    sum[1] = adder1.sum;
+    sum[2] = adder2.sum;
+    sum[3] = adder3.sum;
+    sum[4] = adder4.sum;
+    sum[5] = adder5.sum;
+    sum[6] = adder6.sum;
+    sum[7] = adder7.sum;
+    
+    z = ~(adder0.sum | adder1.sum | adder2.sum | adder3.sum | adder4.sum | adder5.sum | adder6.sum | adder7.sum);
+    n = adder7.sum;
+    v = (a[7] & b[7] & ~adder7.sum) | (~a[7] & ~b[7] & adder7.sum);
+  }
+}

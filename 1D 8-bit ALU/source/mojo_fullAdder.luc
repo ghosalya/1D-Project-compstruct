@@ -1,0 +1,12 @@
+module mojo_fullAdder (
+    input a[3], //takes 2 1-bit number, a[0] = a, a[1] = b, a[2] = carry in   
+    output sum,
+    output carry
+  ) {
+
+  always {
+    sum = (a[0] ^ a[1]) ^ (a[2]);
+    carry = (((a[0] ^ a[1]) & a[2]) | (a[0] & a[1]));
+    
+  }
+}

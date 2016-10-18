@@ -16,6 +16,11 @@ module mojo_top (
     output io_sel [4],      // Digit select on IO Shield
     input io_button [5],    // 5 buttons on IO Shield
     input io_dip [3][8]     // DIP switches on IO Shield
+    
+    //Declare inputs & outputs
+    //uses io_button[0] & io_button[1] as 8 bit inputs
+    // 
+    
   ) {
   
   sig rst;                  // reset signal
@@ -26,7 +31,12 @@ module mojo_top (
     reset_conditioner reset_cond;
   }
   
+  mojo_8bitfulladder duadd; 
+  
   always {
+    duadd.a = io_dip[0];
+    duadd.b = io_dip[1];
+    duadd.alufn0 = io_dip[2][0];
     reset_cond.in = ~rst_n; // input raw inverted reset signal
     rst = reset_cond.out;   // conditioned reset
     
@@ -35,8 +45,15 @@ module mojo_top (
     spi_channel = bzzzz;    // not using flags
     avr_rx = bz;            // not using serial port
     
+    
     io_led = 3x{{8h00}};    // turn LEDs off
     io_seg = 8hff;          // turn segments off
     io_sel = 4hf;           // select no digits
+    
+    io_led[0] = duadd.sum;
+    io_led[1][0] = duadd.z;
+    io_led[1][1] = duadd.v;
+    io_led[1][2] = duadd.n;
+    
   }
 }
