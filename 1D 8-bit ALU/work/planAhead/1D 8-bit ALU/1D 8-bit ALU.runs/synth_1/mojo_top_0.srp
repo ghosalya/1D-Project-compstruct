@@ -78,7 +78,6 @@ Elaborating module <mojo_8bitfulladder_2>.
 
 Elaborating module <mojo_fullAdder_4>.
 WARNING:HDLCompiler:1127 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/8bit_fulladder_2.v" Line 88: Assignment to M_adder7_carry ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 50: Assignment to M_adddr_sum ignored, since the identifier is never used
 
 Elaborating module <compare8_3>.
 
@@ -101,7 +100,6 @@ WARNING:Xst:647 - Input <spi_sck> is never used. This port will be preserved and
 WARNING:Xst:647 - Input <avr_tx> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 INFO:Xst:3210 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" line 33: Output port <out> of the instance <reset_cond> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" line 46: Output port <sum> of the instance <adddr> is unconnected or connected to loadless signal.
     Found 1-bit tristate buffer for signal <spi_miso> created at line 69
     Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 69
     Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 69
@@ -116,7 +114,6 @@ Synthesizing Unit <mojo_8bitfulladder_2>.
     Related source file is "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/8bit_fulladder_2.v".
 INFO:Xst:3210 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/8bit_fulladder_2.v" line 85: Output port <carry> of the instance <adder7> is unconnected or connected to loadless signal.
     Summary:
-	no macro.
 Unit <mojo_8bitfulladder_2> synthesized.
 
 Synthesizing Unit <mojo_fullAdder_4>.
@@ -144,8 +141,8 @@ Macro Statistics
  7-bit shifter logical right                           : 1
 # Tristates                                            : 6
  1-bit tristate buffer                                 : 6
-# Xors                                                 : 17
- 1-bit xor2                                            : 17
+# Xors                                                 : 25
+ 1-bit xor2                                            : 25
 
 =========================================================================
 
@@ -160,8 +157,8 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # Logic shifters                                       : 1
  7-bit shifter logical right                           : 1
-# Xors                                                 : 17
- 1-bit xor2                                            : 17
+# Xors                                                 : 25
+ 1-bit xor2                                            : 25
 
 =========================================================================
 
@@ -204,11 +201,12 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 12
+# BELS                             : 16
 #      GND                         : 1
-#      LUT3                        : 1
-#      LUT5                        : 6
-#      LUT6                        : 3
+#      LUT2                        : 1
+#      LUT4                        : 3
+#      LUT5                        : 2
+#      LUT6                        : 8
 #      VCC                         : 1
 # IO Buffers                       : 69
 #      IBUF                        : 19
@@ -222,14 +220,14 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice LUTs:                   10  out of   5720     0%  
-    Number used as Logic:                10  out of   5720     0%  
+ Number of Slice LUTs:                   14  out of   5720     0%  
+    Number used as Logic:                14  out of   5720     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:     10
-   Number with an unused Flip Flop:      10  out of     10   100%  
-   Number with an unused LUT:             0  out of     10     0%  
-   Number of fully used LUT-FF pairs:     0  out of     10     0%  
+ Number of LUT Flip Flop pairs used:     14
+   Number with an unused Flip Flop:      14  out of     14   100%  
+   Number with an unused LUT:             0  out of     14     0%  
+   Number of fully used LUT-FF pairs:     0  out of     14     0%  
    Number of unique control sets:         0
 
 IO Utilization: 
@@ -269,7 +267,7 @@ Speed Grade: -2
    Minimum period: No path found
    Minimum input arrival time before clock: No path found
    Maximum output required time after clock: No path found
-   Maximum combinational path delay: 11.029ns
+   Maximum combinational path delay: 11.451ns
 
 Timing Details:
 ---------------
@@ -277,36 +275,36 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 94 / 17
+  Total number of paths / destination ports: 204 / 9
 -------------------------------------------------------------------------
-Delay:               11.029ns (Levels of Logic = 12)
-  Source:            io_dip<1> (PAD)
+Delay:               11.451ns (Levels of Logic = 12)
+  Source:            io_dip<16> (PAD)
   Destination:       io_led<16> (PAD)
 
-  Data Path: io_dip<1> to io_led<16>
+  Data Path: io_dip<16> to io_led<16>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             3   1.328   1.196  io_dip_1_IBUF (io_led_1_OBUF)
-     begin scope: 'adddr:a<1>'
-     begin scope: 'adddr/adder1:a<0>'
-     LUT5:I0->O            2   0.254   0.834  carry1 (carry)
+     IBUF:I->O            11   1.328   1.469  io_dip_16_IBUF (io_dip_16_IBUF)
+     begin scope: 'adddr:alufn0'
+     begin scope: 'adddr/adder1:a<2>'
+     LUT5:I0->O            3   0.254   0.874  carry1 (carry)
      end scope: 'adddr/adder1:carry'
-     begin scope: 'adddr/adder3:a<2>'
-     LUT5:I3->O            2   0.250   0.834  carry1 (carry)
+     begin scope: 'adddr/adder3:M_adder1_carry'
+     LUT6:I4->O            3   0.250   0.874  carry1 (carry)
      end scope: 'adddr/adder3:carry'
-     begin scope: 'adddr/adder5:a<2>'
-     LUT5:I3->O            3   0.250   0.874  carry1 (carry)
+     begin scope: 'adddr/adder5:M_adder3_carry'
+     LUT6:I4->O            3   0.250   0.874  carry1 (carry)
      end scope: 'adddr/adder5:carry'
-     begin scope: 'adddr/adder7:a<2>'
-     LUT5:I3->O            1   0.250   1.112  Mxor_sum_xo<0>1 (sum)
+     begin scope: 'adddr/adder7:M_adder5_carry'
+     LUT6:I4->O            2   0.250   1.181  Mxor_sum_xo<0>1 (sum)
      end scope: 'adddr/adder7:sum'
      end scope: 'adddr:n'
-     LUT6:I1->O            1   0.254   0.681  Sh35 (M_cpr_out<0>)
+     LUT6:I0->O            1   0.254   0.681  Sh3 (M_cpr_out<0>)
      OBUF:I->O                 2.912          io_led_16_OBUF (io_led<16>)
     ----------------------------------------
-    Total                     11.029ns (5.498ns logic, 5.531ns route)
-                                       (49.9% logic, 50.1% route)
+    Total                     11.451ns (5.498ns logic, 5.953ns route)
+                                       (48.0% logic, 52.0% route)
 
 =========================================================================
 
@@ -316,14 +314,14 @@ Cross Clock Domains Report:
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.14 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.75 secs
  
 --> 
 
-Total memory usage is 296148 kilobytes
+Total memory usage is 296852 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   12 (   0 filtered)
-Number of infos    :    3 (   0 filtered)
+Number of warnings :   11 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
 

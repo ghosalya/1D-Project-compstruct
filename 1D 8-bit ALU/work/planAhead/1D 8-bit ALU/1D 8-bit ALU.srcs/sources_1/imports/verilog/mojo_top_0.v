@@ -83,8 +83,7 @@ module mojo_top_0 (
     M_cpr_n = M_adddr_n;
     M_cpr_v = M_adddr_v;
     M_cpr_alufn = io_dip[16+1+1-:2];
-    io_led[8+7-:8] = io_dip[8+7-:8];
-    io_led[0+7-:8] = io_dip[0+7-:8];
+    io_led[8+7-:8] = M_adddr_sum;
     io_led[16+7-:8] = M_cpr_out;
   end
 endmodule

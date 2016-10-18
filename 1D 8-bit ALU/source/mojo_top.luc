@@ -56,8 +56,7 @@ module mojo_top (
     cpr.n = adddr.n;
     cpr.v = adddr.v;
     cpr.alufn = io_dip[2][2:1];
-    io_led[1] = io_dip[1];
-    io_led[0] = io_dip[0];
+    io_led[1] = adddr.sum;
     io_led[2] = cpr.out;
     
     

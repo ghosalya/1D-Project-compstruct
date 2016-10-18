@@ -97,14 +97,14 @@ module mojo_8bitfulladder_2 (
     M_adder5_a[0+0-:1] = a[5+0-:1];
     M_adder6_a[0+0-:1] = a[6+0-:1];
     M_adder7_a[0+0-:1] = a[7+0-:1];
-    M_adder0_a[1+0-:1] = b[0+0-:1];
-    M_adder1_a[1+0-:1] = b[1+0-:1];
-    M_adder2_a[1+0-:1] = b[2+0-:1];
-    M_adder3_a[1+0-:1] = b[3+0-:1];
-    M_adder4_a[1+0-:1] = b[4+0-:1];
-    M_adder5_a[1+0-:1] = b[5+0-:1];
-    M_adder6_a[1+0-:1] = b[6+0-:1];
-    M_adder7_a[1+0-:1] = b[7+0-:1];
+    M_adder0_a[1+0-:1] = alufn0 ^ b[0+0-:1];
+    M_adder1_a[1+0-:1] = alufn0 ^ b[1+0-:1];
+    M_adder2_a[1+0-:1] = alufn0 ^ b[2+0-:1];
+    M_adder3_a[1+0-:1] = alufn0 ^ b[3+0-:1];
+    M_adder4_a[1+0-:1] = alufn0 ^ b[4+0-:1];
+    M_adder5_a[1+0-:1] = alufn0 ^ b[5+0-:1];
+    M_adder6_a[1+0-:1] = alufn0 ^ b[6+0-:1];
+    M_adder7_a[1+0-:1] = alufn0 ^ b[7+0-:1];
     M_adder0_a[2+0-:1] = alufn0;
     M_adder1_a[2+0-:1] = M_adder0_carry;
     M_adder2_a[2+0-:1] = M_adder1_carry;
@@ -123,6 +123,6 @@ module mojo_8bitfulladder_2 (
     sum[7+0-:1] = M_adder7_sum;
     z = ~(M_adder0_sum | M_adder1_sum | M_adder2_sum | M_adder3_sum | M_adder4_sum | M_adder5_sum | M_adder6_sum | M_adder7_sum);
     n = M_adder7_sum;
-    v = (a[7+0-:1] & b[7+0-:1] & ~M_adder7_sum) | (~a[7+0-:1] & ~b[7+0-:1] & M_adder7_sum);
+    v = (a[7+0-:1] & (alufn0 ^ b[7+0-:1]) & ~M_adder7_sum) | (~a[7+0-:1] & ~(alufn0 ^ b[7+0-:1]) & M_adder7_sum);
   end
 endmodule

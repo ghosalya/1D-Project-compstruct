@@ -27,14 +27,14 @@ module mojo_8bitfulladder (
     adder6.a[0] = a[6];
     adder7.a[0] = a[7];
     
-    adder0.a[1] = b[0];
-    adder1.a[1] = b[1];
-    adder2.a[1] = b[2];
-    adder3.a[1] = b[3];
-    adder4.a[1] = b[4];
-    adder5.a[1] = b[5];
-    adder6.a[1] = b[6];
-    adder7.a[1] = b[7];
+    adder0.a[1] = alufn0^b[0];
+    adder1.a[1] = alufn0^b[1];
+    adder2.a[1] = alufn0^b[2];
+    adder3.a[1] = alufn0^b[3];
+    adder4.a[1] = alufn0^b[4];
+    adder5.a[1] = alufn0^b[5];
+    adder6.a[1] = alufn0^b[6];
+    adder7.a[1] = alufn0^b[7];
     
     adder0.a[2] = alufn0;
     adder1.a[2] = adder0.carry;
@@ -56,6 +56,6 @@ module mojo_8bitfulladder (
     
     z = ~(adder0.sum | adder1.sum | adder2.sum | adder3.sum | adder4.sum | adder5.sum | adder6.sum | adder7.sum);
     n = adder7.sum;
-    v = (a[7] & b[7] & ~adder7.sum) | (~a[7] & ~b[7] & adder7.sum);
+    v = (a[7] & (alufn0^b[7]) & ~adder7.sum) | (~a[7] & ~(alufn0^b[7]) & adder7.sum);
   }
 }
