@@ -1,0 +1,56 @@
+module boole8 (
+    input alufn[4],
+    input a[8], //a=a[0], b=a[1]
+    input b[8],
+    output out[8]
+  ) {
+  
+  boole1 bobo0;
+  boole1 bobo1;
+  boole1 bobo2;
+  boole1 bobo3;
+  boole1 bobo4;
+  boole1 bobo5;
+  boole1 bobo6;
+  boole1 bobo7;
+  
+  always {
+    bobo0.alufn = alufn;
+    bobo1.alufn = alufn;
+    bobo2.alufn = alufn;
+    bobo3.alufn = alufn;
+    bobo4.alufn = alufn;
+    bobo5.alufn = alufn;
+    bobo6.alufn = alufn;
+    bobo7.alufn = alufn;
+    
+    bobo0.a[0] = a[0];
+    bobo1.a[0] = a[1];
+    bobo2.a[0] = a[2];
+    bobo3.a[0] = a[3];
+    bobo4.a[0] = a[4];
+    bobo5.a[0] = a[5];
+    bobo6.a[0] = a[6];
+    bobo7.a[0] = a[7];
+    
+    bobo0.a[1] = b[0];
+    bobo1.a[1] = b[1];
+    bobo2.a[1] = b[2];
+    bobo3.a[1] = b[3];
+    bobo4.a[1] = b[4];
+    bobo5.a[1] = b[5];
+    bobo6.a[1] = b[6];
+    bobo7.a[1] = b[7];
+    
+    out[0] = bobo0.out;
+    out[1] = bobo1.out;
+    out[2] = bobo2.out;
+    out[3] = bobo3.out;
+    out[4] = bobo4.out;
+    out[5] = bobo5.out;
+    out[6] = bobo6.out;
+    out[7] = bobo7.out;
+    
+    
+  }
+}

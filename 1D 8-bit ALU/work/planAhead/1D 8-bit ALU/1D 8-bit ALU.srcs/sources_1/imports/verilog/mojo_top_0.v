@@ -36,27 +36,18 @@ module mojo_top_0 (
     .out(M_reset_cond_out)
   );
   
-  wire [8-1:0] M_duadd_sum;
-  wire [1-1:0] M_duadd_z;
-  wire [1-1:0] M_duadd_v;
-  wire [1-1:0] M_duadd_n;
-  reg [8-1:0] M_duadd_a;
-  reg [8-1:0] M_duadd_b;
-  reg [1-1:0] M_duadd_alufn0;
-  mojo_8bitfulladder_2 duadd (
-    .a(M_duadd_a),
-    .b(M_duadd_b),
-    .alufn0(M_duadd_alufn0),
-    .sum(M_duadd_sum),
-    .z(M_duadd_z),
-    .v(M_duadd_v),
-    .n(M_duadd_n)
+  wire [8-1:0] M_boll_out;
+  reg [4-1:0] M_boll_alufn;
+  reg [8-1:0] M_boll_a;
+  reg [8-1:0] M_boll_b;
+  boole8_2 boll (
+    .alufn(M_boll_alufn),
+    .a(M_boll_a),
+    .b(M_boll_b),
+    .out(M_boll_out)
   );
   
   always @* begin
-    M_duadd_a = io_dip[0+7-:8];
-    M_duadd_b = io_dip[8+7-:8];
-    M_duadd_alufn0 = io_dip[16+0+0-:1];
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
     led = 8'h00;
@@ -66,9 +57,9 @@ module mojo_top_0 (
     io_led = 24'h000000;
     io_seg = 8'hff;
     io_sel = 4'hf;
-    io_led[0+7-:8] = M_duadd_sum;
-    io_led[8+0+0-:1] = M_duadd_z;
-    io_led[8+1+0-:1] = M_duadd_v;
-    io_led[8+2+0-:1] = M_duadd_n;
+    M_boll_alufn = io_dip[0+0+3-:4];
+    M_boll_a = io_dip[8+7-:8];
+    M_boll_b = io_dip[16+7-:8];
+    io_led[0+7-:8] = M_boll_out;
   end
 endmodule

@@ -1,0 +1,14 @@
+module boole1 (
+    input alufn[4],
+    input a[2], //a=a[0], b=a[1]
+    output out
+  ) {
+  
+  multiplexer4 muxx;
+
+  always {
+    muxx.a = alufn;
+    muxx.sel = a;
+    out = muxx.out;
+  }
+}

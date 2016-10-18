@@ -1,0 +1,11 @@
+module multiplexer4 (
+    input a[4], //00 = a[0], 01=a[1] and so on 
+    input sel[2], //selector bit
+    output out
+  ) {
+
+  always {
+    out = a[sel];
+  }
+}
+
