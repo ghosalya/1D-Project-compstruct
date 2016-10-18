@@ -4,7 +4,7 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timestamp 2016 10 19 1 12 43)
+      (timestamp 2016 10 19 2 41 50)
       (program "Xilinx ngc2edif" (version "P.20131013"))
       (author "Xilinx. Inc ")
       (comment "This EDIF netlist is to be used within supported synthesis tools")
@@ -67,6 +67,32 @@
           )
       )
     )
+    (cell LUT5
+      (cellType GENERIC)
+        (view view_1
+          (viewType NETLIST)
+          (interface
+            (port I0
+              (direction INPUT)
+            )
+            (port I1
+              (direction INPUT)
+            )
+            (port I2
+              (direction INPUT)
+            )
+            (port I3
+              (direction INPUT)
+            )
+            (port I4
+              (direction INPUT)
+            )
+            (port O
+              (direction OUTPUT)
+            )
+          )
+      )
+    )
     (cell IBUF
       (cellType GENERIC)
         (view view_1
@@ -112,49 +138,6 @@
           )
       )
     )
-    (cell LUT2
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port I0
-              (direction INPUT)
-            )
-            (port I1
-              (direction INPUT)
-            )
-            (port O
-              (direction OUTPUT)
-            )
-          )
-      )
-    )
-    (cell LUT5
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port I0
-              (direction INPUT)
-            )
-            (port I1
-              (direction INPUT)
-            )
-            (port I2
-              (direction INPUT)
-            )
-            (port I3
-              (direction INPUT)
-            )
-            (port I4
-              (direction INPUT)
-            )
-            (port O
-              (direction OUTPUT)
-            )
-          )
-      )
-    )
     (cell LUT4
       (cellType GENERIC)
         (view view_1
@@ -178,867 +161,286 @@
           )
       )
     )
+    (cell LUT3
+      (cellType GENERIC)
+        (view view_1
+          (viewType NETLIST)
+          (interface
+            (port I0
+              (direction INPUT)
+            )
+            (port I1
+              (direction INPUT)
+            )
+            (port I2
+              (direction INPUT)
+            )
+            (port O
+              (direction OUTPUT)
+            )
+          )
+      )
+    )
   )
 
   (library mojo_top_0_lib
     (edifLevel 0)
     (technology (numberDefinition))
-    (cell (rename mojo_fullAdder_4_NO7_adder7 "mojo_fullAdder_4")
+    (cell (rename shifterleft_2_shile "shifterleft_2")
       (cellType GENERIC)
         (view view_1
           (viewType NETLIST)
           (interface
             (port (rename a_0__ "a<0>")
+              (direction INPUT)
+            )
+            (port (rename io_dip_9__mmx_out4 "io_dip<9>_mmx_out4")
+              (direction INPUT)
+            )
+            (port (rename io_dip_9__mmx_out5 "io_dip<9>_mmx_out5")
+              (direction INPUT)
+            )
+            (port (rename io_dip_9__mmx_out3 "io_dip<9>_mmx_out3")
+              (direction INPUT)
+            )
+            (port (rename a_1__ "a<1>")
               (direction INPUT)
             )
             (port (rename a_2__ "a<2>")
               (direction INPUT)
             )
-            (port io_dip_15_IBUF
+            (port (rename a_3__ "a<3>")
               (direction INPUT)
             )
-            (port io_dip_6_IBUF
+            (port (rename a_5__ "a<5>")
               (direction INPUT)
             )
-            (port M_adder5_carry
+            (port (rename a_7__ "a<7>")
               (direction INPUT)
             )
-            (port io_dip_14_IBUF
-              (direction INPUT)
-            )
-            (port sum
-              (direction OUTPUT)
-            )
-          )
-          (contents
-            (instance (rename Mxor_sum_xo_0_1 "Mxor_sum_xo<0>1")
-              (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "69A5A596695A5A96") (owner "Xilinx"))
-            )
-            (net (rename a_0__ "a<0>")
-              (joined
-                (portRef a_0__)
-                (portRef I0 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net (rename a_2__ "a<2>")
-              (joined
-                (portRef a_2__)
-                (portRef I1 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net io_dip_15_IBUF
-              (joined
-                (portRef io_dip_15_IBUF)
-                (portRef I2 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net io_dip_6_IBUF
-              (joined
-                (portRef io_dip_6_IBUF)
-                (portRef I3 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net M_adder5_carry
-              (joined
-                (portRef M_adder5_carry)
-                (portRef I4 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net io_dip_14_IBUF
-              (joined
-                (portRef io_dip_14_IBUF)
-                (portRef I5 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net sum
-              (joined
-                (portRef sum)
-                (portRef O (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-          )
-      )
-    )
-    (cell (rename mojo_fullAdder_4_NO6_adder6 "mojo_fullAdder_4")
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port (rename a_0__ "a<0>")
-              (direction INPUT)
-            )
-            (port (rename a_2__ "a<2>")
-              (direction INPUT)
-            )
-            (port io_dip_14_IBUF
-              (direction INPUT)
-            )
-            (port M_adder5_carry
-              (direction INPUT)
-            )
-            (port sum
-              (direction OUTPUT)
-            )
-          )
-          (contents
-            (instance (rename Mxor_sum_xo_0_1 "Mxor_sum_xo<0>1")
-              (viewRef view_1 (cellRef LUT4 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "6996") (owner "Xilinx"))
-            )
-            (net (rename a_0__ "a<0>")
-              (joined
-                (portRef a_0__)
-                (portRef I0 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net (rename a_2__ "a<2>")
-              (joined
-                (portRef a_2__)
-                (portRef I1 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net io_dip_14_IBUF
-              (joined
-                (portRef io_dip_14_IBUF)
-                (portRef I2 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net M_adder5_carry
-              (joined
-                (portRef M_adder5_carry)
-                (portRef I3 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net sum
-              (joined
-                (portRef sum)
-                (portRef O (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-          )
-      )
-    )
-    (cell (rename mojo_fullAdder_4_NO5_adder5 "mojo_fullAdder_4")
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port (rename a_0__ "a<0>")
-              (direction INPUT)
-            )
-            (port (rename a_2__ "a<2>")
-              (direction INPUT)
-            )
-            (port io_dip_13_IBUF
-              (direction INPUT)
-            )
-            (port io_dip_4_IBUF
-              (direction INPUT)
-            )
-            (port M_adder3_carry
-              (direction INPUT)
-            )
-            (port io_dip_12_IBUF
-              (direction INPUT)
-            )
-            (port sum
-              (direction OUTPUT)
-            )
-            (port carry
-              (direction OUTPUT)
-            )
-          )
-          (contents
-            (instance (rename Mxor_sum_xo_0_1 "Mxor_sum_xo<0>1")
-              (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "69A5A596695A5A96") (owner "Xilinx"))
-            )
-            (instance carry1
-              (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "BE3A3A28BEACAC28") (owner "Xilinx"))
-            )
-            (net (rename a_0__ "a<0>")
-              (joined
-                (portRef a_0__)
-                (portRef I0 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I0 (instanceRef carry1))
-              )
-            )
-            (net (rename a_2__ "a<2>")
-              (joined
-                (portRef a_2__)
-                (portRef I1 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I1 (instanceRef carry1))
-              )
-            )
-            (net io_dip_13_IBUF
-              (joined
-                (portRef io_dip_13_IBUF)
-                (portRef I2 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I2 (instanceRef carry1))
-              )
-            )
-            (net io_dip_4_IBUF
-              (joined
-                (portRef io_dip_4_IBUF)
-                (portRef I3 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I3 (instanceRef carry1))
-              )
-            )
-            (net M_adder3_carry
-              (joined
-                (portRef M_adder3_carry)
-                (portRef I4 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I4 (instanceRef carry1))
-              )
-            )
-            (net io_dip_12_IBUF
-              (joined
-                (portRef io_dip_12_IBUF)
-                (portRef I5 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I5 (instanceRef carry1))
-              )
-            )
-            (net sum
-              (joined
-                (portRef sum)
-                (portRef O (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net carry
-              (joined
-                (portRef carry)
-                (portRef O (instanceRef carry1))
-              )
-            )
-          )
-      )
-    )
-    (cell (rename mojo_fullAdder_4_NO4_adder4 "mojo_fullAdder_4")
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port (rename a_0__ "a<0>")
-              (direction INPUT)
-            )
-            (port (rename a_2__ "a<2>")
-              (direction INPUT)
-            )
-            (port io_dip_12_IBUF
-              (direction INPUT)
-            )
-            (port M_adder3_carry
-              (direction INPUT)
-            )
-            (port sum
-              (direction OUTPUT)
-            )
-          )
-          (contents
-            (instance (rename Mxor_sum_xo_0_1 "Mxor_sum_xo<0>1")
-              (viewRef view_1 (cellRef LUT4 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "6996") (owner "Xilinx"))
-            )
-            (net (rename a_0__ "a<0>")
-              (joined
-                (portRef a_0__)
-                (portRef I0 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net (rename a_2__ "a<2>")
-              (joined
-                (portRef a_2__)
-                (portRef I1 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net io_dip_12_IBUF
-              (joined
-                (portRef io_dip_12_IBUF)
-                (portRef I2 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net M_adder3_carry
-              (joined
-                (portRef M_adder3_carry)
-                (portRef I3 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net sum
-              (joined
-                (portRef sum)
-                (portRef O (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-          )
-      )
-    )
-    (cell (rename mojo_fullAdder_4_NO3_adder3 "mojo_fullAdder_4")
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port (rename a_0__ "a<0>")
-              (direction INPUT)
-            )
-            (port (rename a_2__ "a<2>")
-              (direction INPUT)
-            )
-            (port io_dip_11_IBUF
-              (direction INPUT)
-            )
-            (port io_dip_2_IBUF
-              (direction INPUT)
-            )
-            (port M_adder1_carry
-              (direction INPUT)
-            )
-            (port io_dip_10_IBUF
-              (direction INPUT)
-            )
-            (port sum
-              (direction OUTPUT)
-            )
-            (port carry
-              (direction OUTPUT)
-            )
-          )
-          (contents
-            (instance (rename Mxor_sum_xo_0_1 "Mxor_sum_xo<0>1")
-              (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "69A5A596695A5A96") (owner "Xilinx"))
-            )
-            (instance carry1
-              (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "BE3A3A28BEACAC28") (owner "Xilinx"))
-            )
-            (net (rename a_0__ "a<0>")
-              (joined
-                (portRef a_0__)
-                (portRef I0 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I0 (instanceRef carry1))
-              )
-            )
-            (net (rename a_2__ "a<2>")
-              (joined
-                (portRef a_2__)
-                (portRef I1 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I1 (instanceRef carry1))
-              )
-            )
-            (net io_dip_11_IBUF
-              (joined
-                (portRef io_dip_11_IBUF)
-                (portRef I2 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I2 (instanceRef carry1))
-              )
-            )
-            (net io_dip_2_IBUF
-              (joined
-                (portRef io_dip_2_IBUF)
-                (portRef I3 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I3 (instanceRef carry1))
-              )
-            )
-            (net M_adder1_carry
-              (joined
-                (portRef M_adder1_carry)
-                (portRef I4 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I4 (instanceRef carry1))
-              )
-            )
-            (net io_dip_10_IBUF
-              (joined
-                (portRef io_dip_10_IBUF)
-                (portRef I5 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I5 (instanceRef carry1))
-              )
-            )
-            (net sum
-              (joined
-                (portRef sum)
-                (portRef O (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net carry
-              (joined
-                (portRef carry)
-                (portRef O (instanceRef carry1))
-              )
-            )
-          )
-      )
-    )
-    (cell (rename mojo_fullAdder_4_NO2_adder2 "mojo_fullAdder_4")
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port (rename a_0__ "a<0>")
-              (direction INPUT)
-            )
-            (port (rename a_2__ "a<2>")
-              (direction INPUT)
-            )
-            (port io_dip_10_IBUF
-              (direction INPUT)
-            )
-            (port M_adder1_carry
-              (direction INPUT)
-            )
-            (port sum
-              (direction OUTPUT)
-            )
-          )
-          (contents
-            (instance (rename Mxor_sum_xo_0_1 "Mxor_sum_xo<0>1")
-              (viewRef view_1 (cellRef LUT4 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "6996") (owner "Xilinx"))
-            )
-            (net (rename a_0__ "a<0>")
-              (joined
-                (portRef a_0__)
-                (portRef I0 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net (rename a_2__ "a<2>")
-              (joined
-                (portRef a_2__)
-                (portRef I1 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net io_dip_10_IBUF
-              (joined
-                (portRef io_dip_10_IBUF)
-                (portRef I2 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net M_adder1_carry
-              (joined
-                (portRef M_adder1_carry)
-                (portRef I3 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net sum
-              (joined
-                (portRef sum)
-                (portRef O (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-          )
-      )
-    )
-    (cell (rename mojo_fullAdder_4_NO1_adder1 "mojo_fullAdder_4")
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port (rename a_0__ "a<0>")
-              (direction INPUT)
-            )
-            (port io_dip_9_IBUF
-              (direction INPUT)
-            )
-            (port io_dip_8_IBUF
-              (direction INPUT)
-            )
-            (port io_dip_0_IBUF
-              (direction INPUT)
-            )
-            (port (rename a_2__ "a<2>")
-              (direction INPUT)
-            )
-            (port sum
-              (direction OUTPUT)
-            )
-            (port carry
-              (direction OUTPUT)
-            )
-          )
-          (contents
-            (instance (rename Mxor_sum_xo_0_1 "Mxor_sum_xo<0>1")
-              (viewRef view_1 (cellRef LUT5 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property PK_HLUTNM (string "___XLNM___0___adddr/adder1/Mxor_sum_xo<0>1") (owner "Xilinx"))
-              (property INIT (string "66969666") (owner "Xilinx"))
-            )
-            (instance carry1
-              (viewRef view_1 (cellRef LUT5 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property PK_HLUTNM (string "___XLNM___0___adddr/adder1/Mxor_sum_xo<0>1") (owner "Xilinx"))
-              (property INIT (string "F6E260E2") (owner "Xilinx"))
-            )
-            (net (rename a_0__ "a<0>")
-              (joined
-                (portRef a_0__)
-                (portRef I0 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I2 (instanceRef carry1))
-              )
-            )
-            (net io_dip_9_IBUF
-              (joined
-                (portRef io_dip_9_IBUF)
-                (portRef I1 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I1 (instanceRef carry1))
-              )
-            )
-            (net io_dip_8_IBUF
-              (joined
-                (portRef io_dip_8_IBUF)
-                (portRef I2 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I3 (instanceRef carry1))
-              )
-            )
-            (net io_dip_0_IBUF
-              (joined
-                (portRef io_dip_0_IBUF)
-                (portRef I3 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I4 (instanceRef carry1))
-              )
-            )
-            (net (rename a_2__ "a<2>")
-              (joined
-                (portRef a_2__)
-                (portRef I4 (instanceRef Mxor_sum_xo_0_1))
-                (portRef I0 (instanceRef carry1))
-              )
-            )
-            (net sum
-              (joined
-                (portRef sum)
-                (portRef O (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net carry
-              (joined
-                (portRef carry)
-                (portRef O (instanceRef carry1))
-              )
-            )
-          )
-      )
-    )
-    (cell (rename mojo_fullAdder_4_adder0 "mojo_fullAdder_4")
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port (rename a_0__ "a<0>")
-              (direction INPUT)
-            )
-            (port io_dip_8_IBUF
-              (direction INPUT)
-            )
-            (port sum
-              (direction OUTPUT)
-            )
-          )
-          (contents
-            (instance (rename Mxor_sum_xo_0_1 "Mxor_sum_xo<0>1")
-              (viewRef view_1 (cellRef LUT2 (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "6") (owner "Xilinx"))
-            )
-            (net (rename a_0__ "a<0>")
-              (joined
-                (portRef a_0__)
-                (portRef I0 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net io_dip_8_IBUF
-              (joined
-                (portRef io_dip_8_IBUF)
-                (portRef I1 (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-            (net sum
-              (joined
-                (portRef sum)
-                (portRef O (instanceRef Mxor_sum_xo_0_1))
-              )
-            )
-          )
-      )
-    )
-    (cell (rename mojo_8bitfulladder_2_adddr "mojo_8bitfulladder_2")
-      (cellType GENERIC)
-        (view view_1
-          (viewType NETLIST)
-          (interface
-            (port alufn0
-              (direction INPUT)
-            )
-            (port v
-              (direction OUTPUT)
-            )
-            (port n
-              (direction OUTPUT)
-            )
-            (port (array (rename a "a<7:0>") 8)
+            (port (array (rename b "b<2:0>") 3)
               (direction INPUT))
-            (port (array (rename b "b<7:0>") 8)
-              (direction INPUT))
-            (port (array (rename sum "sum<6:0>") 7)
+            (port (array (rename out "out<7:0>") 8)
               (direction OUTPUT))
           )
           (contents
-            (instance v1
+            (instance Mmux_out71
+              (viewRef view_1 (cellRef LUT4 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property PK_HLUTNM (string "___XLNM___0___shile/Mmux_out71") (owner "Xilinx"))
+              (property INIT (string "0100") (owner "Xilinx"))
+            )
+            (instance Mmux_out51
+              (viewRef view_1 (cellRef LUT3 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property PK_HLUTNM (string "___XLNM___1___shile/Mmux_out51") (owner "Xilinx"))
+              (property INIT (string "72") (owner "Xilinx"))
+            )
+            (instance Mmux_out41
+              (viewRef view_1 (cellRef LUT3 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property PK_HLUTNM (string "___XLNM___1___shile/Mmux_out51") (owner "Xilinx"))
+              (property INIT (string "27") (owner "Xilinx"))
+            )
+            (instance Mmux_out81
+              (viewRef view_1 (cellRef LUT5 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property PK_HLUTNM (string "___XLNM___0___shile/Mmux_out71") (owner "Xilinx"))
+              (property INIT (string "11100100") (owner "Xilinx"))
+            )
+            (instance Mmux_out11
               (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "4109092841606028") (owner "Xilinx"))
+              (property INIT (string "1505140411011000") (owner "Xilinx"))
             )
-            (instance adder0
-              (viewRef view_1 (cellRef mojo_fullAdder_4_adder0 (libraryRef mojo_top_0_lib)))
-              (property NLW_UNIQUE_ID (integer 0) (owner "Xilinx"))
-              (property NLW_MACRO_TAG (integer 2) (owner "Xilinx"))
-              (property NLW_MACRO_ALIAS (string "mojo_fullAdder_4_adder0") (owner "Xilinx"))
+            (instance Mmux_out31
+              (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property INIT (string "2202200077577555") (owner "Xilinx"))
             )
-            (instance adder1
-              (viewRef view_1 (cellRef mojo_fullAdder_4_NO1_adder1 (libraryRef mojo_top_0_lib)))
-              (property NLW_UNIQUE_ID (integer 1) (owner "Xilinx"))
-              (property NLW_MACRO_TAG (integer 3) (owner "Xilinx"))
-              (property NLW_MACRO_ALIAS (string "mojo_fullAdder_4_NO1_adder1") (owner "Xilinx"))
+            (instance Mmux_out6_SW0
+              (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property INIT (string "02A252F207A757F7") (owner "Xilinx"))
             )
-            (instance adder2
-              (viewRef view_1 (cellRef mojo_fullAdder_4_NO2_adder2 (libraryRef mojo_top_0_lib)))
-              (property NLW_UNIQUE_ID (integer 2) (owner "Xilinx"))
-              (property NLW_MACRO_TAG (integer 4) (owner "Xilinx"))
-              (property NLW_MACRO_ALIAS (string "mojo_fullAdder_4_NO2_adder2") (owner "Xilinx"))
+            (instance Mmux_out6
+              (viewRef view_1 (cellRef LUT3 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property PK_HLUTNM (string "___XLNM___2___shile/Mmux_out6") (owner "Xilinx"))
+              (property INIT (string "B1") (owner "Xilinx"))
             )
-            (instance adder3
-              (viewRef view_1 (cellRef mojo_fullAdder_4_NO3_adder3 (libraryRef mojo_top_0_lib)))
-              (property NLW_UNIQUE_ID (integer 3) (owner "Xilinx"))
-              (property NLW_MACRO_TAG (integer 5) (owner "Xilinx"))
-              (property NLW_MACRO_ALIAS (string "mojo_fullAdder_4_NO3_adder3") (owner "Xilinx"))
+            (instance Mmux_out2_SW0
+              (viewRef view_1 (cellRef LUT3 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property PK_HLUTNM (string "___XLNM___2___shile/Mmux_out6") (owner "Xilinx"))
+              (property INIT (string "27") (owner "Xilinx"))
             )
-            (instance adder4
-              (viewRef view_1 (cellRef mojo_fullAdder_4_NO4_adder4 (libraryRef mojo_top_0_lib)))
-              (property NLW_UNIQUE_ID (integer 4) (owner "Xilinx"))
-              (property NLW_MACRO_TAG (integer 6) (owner "Xilinx"))
-              (property NLW_MACRO_ALIAS (string "mojo_fullAdder_4_NO4_adder4") (owner "Xilinx"))
-            )
-            (instance adder5
-              (viewRef view_1 (cellRef mojo_fullAdder_4_NO5_adder5 (libraryRef mojo_top_0_lib)))
-              (property NLW_UNIQUE_ID (integer 5) (owner "Xilinx"))
-              (property NLW_MACRO_TAG (integer 7) (owner "Xilinx"))
-              (property NLW_MACRO_ALIAS (string "mojo_fullAdder_4_NO5_adder5") (owner "Xilinx"))
-            )
-            (instance adder6
-              (viewRef view_1 (cellRef mojo_fullAdder_4_NO6_adder6 (libraryRef mojo_top_0_lib)))
-              (property NLW_UNIQUE_ID (integer 6) (owner "Xilinx"))
-              (property NLW_MACRO_TAG (integer 8) (owner "Xilinx"))
-              (property NLW_MACRO_ALIAS (string "mojo_fullAdder_4_NO6_adder6") (owner "Xilinx"))
-            )
-            (instance adder7
-              (viewRef view_1 (cellRef mojo_fullAdder_4_NO7_adder7 (libraryRef mojo_top_0_lib)))
-              (property NLW_UNIQUE_ID (integer 7) (owner "Xilinx"))
-              (property NLW_MACRO_TAG (integer 9) (owner "Xilinx"))
-              (property NLW_MACRO_ALIAS (string "mojo_fullAdder_4_NO7_adder7") (owner "Xilinx"))
-            )
-            (net (rename a_7_ "a<7>")
-              (joined
-                (portRef (member a 0))
-                (portRef I0 (instanceRef v1))
-                (portRef a_0__ (instanceRef adder7))
-              )
-            )
-            (net alufn0
-              (joined
-                (portRef alufn0)
-                (portRef I1 (instanceRef v1))
-                (portRef a_2__ (instanceRef adder1))
-                (portRef a_2__ (instanceRef adder2))
-                (portRef a_2__ (instanceRef adder3))
-                (portRef a_2__ (instanceRef adder4))
-                (portRef a_2__ (instanceRef adder5))
-                (portRef a_2__ (instanceRef adder6))
-                (portRef a_2__ (instanceRef adder7))
-              )
-            )
-            (net (rename b_7_ "b<7>")
-              (joined
-                (portRef (member b 0))
-                (portRef I2 (instanceRef v1))
-                (portRef io_dip_15_IBUF (instanceRef adder7))
-              )
-            )
-            (net (rename a_6_ "a<6>")
-              (joined
-                (portRef (member a 1))
-                (portRef I3 (instanceRef v1))
-                (portRef a_0__ (instanceRef adder6))
-                (portRef io_dip_6_IBUF (instanceRef adder7))
-              )
-            )
-            (net M_adder5_carry
-              (joined
-                (portRef I4 (instanceRef v1))
-                (portRef M_adder5_carry (instanceRef adder6))
-                (portRef M_adder5_carry (instanceRef adder7))
-                (portRef carry (instanceRef adder5))
-              )
-            )
-            (net (rename b_6_ "b<6>")
-              (joined
-                (portRef (member b 1))
-                (portRef I5 (instanceRef v1))
-                (portRef io_dip_14_IBUF (instanceRef adder6))
-                (portRef io_dip_14_IBUF (instanceRef adder7))
-              )
-            )
-            (net v
-              (joined
-                (portRef v)
-                (portRef O (instanceRef v1))
-              )
-            )
-            (net (rename a_0_ "a<0>")
-              (joined
-                (portRef (member a 7))
-                (portRef a_0__ (instanceRef adder0))
-                (portRef io_dip_0_IBUF (instanceRef adder1))
-              )
+            (instance Mmux_out2
+              (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property INIT (string "1110001055544454") (owner "Xilinx"))
             )
             (net (rename b_0_ "b<0>")
               (joined
-                (portRef (member b 7))
-                (portRef io_dip_8_IBUF (instanceRef adder0))
-                (portRef io_dip_8_IBUF (instanceRef adder1))
-              )
-            )
-            (net (rename sum_0_ "sum<0>")
-              (joined
-                (portRef (member sum 6))
-                (portRef sum (instanceRef adder0))
-              )
-            )
-            (net (rename a_1_ "a<1>")
-              (joined
-                (portRef (member a 6))
-                (portRef a_0__ (instanceRef adder1))
+                (portRef (member b 2))
+                (portRef I0 (instanceRef Mmux_out71))
+                (portRef I0 (instanceRef Mmux_out51))
+                (portRef I0 (instanceRef Mmux_out41))
+                (portRef I2 (instanceRef Mmux_out81))
+                (portRef I2 (instanceRef Mmux_out11))
+                (portRef I0 (instanceRef Mmux_out31))
+                (portRef I0 (instanceRef Mmux_out6))
+                (portRef I0 (instanceRef Mmux_out2_SW0))
+                (portRef I3 (instanceRef Mmux_out2))
               )
             )
             (net (rename b_1_ "b<1>")
               (joined
-                (portRef (member b 6))
-                (portRef io_dip_9_IBUF (instanceRef adder1))
-              )
-            )
-            (net (rename sum_1_ "sum<1>")
-              (joined
-                (portRef (member sum 5))
-                (portRef sum (instanceRef adder1))
-              )
-            )
-            (net M_adder1_carry
-              (joined
-                (portRef M_adder1_carry (instanceRef adder2))
-                (portRef M_adder1_carry (instanceRef adder3))
-                (portRef carry (instanceRef adder1))
-              )
-            )
-            (net (rename a_2_ "a<2>")
-              (joined
-                (portRef (member a 5))
-                (portRef a_0__ (instanceRef adder2))
-                (portRef io_dip_2_IBUF (instanceRef adder3))
+                (portRef (member b 1))
+                (portRef I1 (instanceRef Mmux_out71))
+                (portRef I0 (instanceRef Mmux_out81))
+                (portRef I1 (instanceRef Mmux_out11))
+                (portRef I2 (instanceRef Mmux_out31))
+                (portRef I2 (instanceRef Mmux_out6_SW0))
+                (portRef I1 (instanceRef Mmux_out2))
               )
             )
             (net (rename b_2_ "b<2>")
               (joined
-                (portRef (member b 5))
-                (portRef io_dip_10_IBUF (instanceRef adder2))
-                (portRef io_dip_10_IBUF (instanceRef adder3))
+                (portRef (member b 0))
+                (portRef I2 (instanceRef Mmux_out71))
+                (portRef I1 (instanceRef Mmux_out81))
+                (portRef I0 (instanceRef Mmux_out11))
+                (portRef I1 (instanceRef Mmux_out31))
+                (portRef I0 (instanceRef Mmux_out6_SW0))
+                (portRef I0 (instanceRef Mmux_out2))
               )
             )
-            (net (rename sum_2_ "sum<2>")
+            (net (rename a_0__ "a<0>")
               (joined
-                (portRef (member sum 4))
-                (portRef sum (instanceRef adder2))
+                (portRef a_0__)
+                (portRef I3 (instanceRef Mmux_out71))
+                (portRef I4 (instanceRef Mmux_out81))
+                (portRef I5 (instanceRef Mmux_out11))
+                (portRef I1 (instanceRef Mmux_out2_SW0))
               )
             )
-            (net (rename a_3_ "a<3>")
+            (net (rename out_0_ "out<0>")
               (joined
-                (portRef (member a 4))
-                (portRef a_0__ (instanceRef adder3))
+                (portRef (member out 7))
+                (portRef O (instanceRef Mmux_out71))
               )
             )
-            (net (rename b_3_ "b<3>")
+            (net (rename io_dip_9__mmx_out4 "io_dip<9>_mmx_out4")
               (joined
-                (portRef (member b 4))
-                (portRef io_dip_11_IBUF (instanceRef adder3))
+                (portRef io_dip_9__mmx_out4)
+                (portRef I1 (instanceRef Mmux_out51))
+                (portRef I2 (instanceRef Mmux_out41))
               )
             )
-            (net (rename sum_3_ "sum<3>")
+            (net (rename io_dip_9__mmx_out5 "io_dip<9>_mmx_out5")
               (joined
-                (portRef (member sum 3))
-                (portRef sum (instanceRef adder3))
+                (portRef io_dip_9__mmx_out5)
+                (portRef I2 (instanceRef Mmux_out51))
+                (portRef I2 (instanceRef Mmux_out6))
               )
             )
-            (net M_adder3_carry
+            (net (rename out_6_ "out<6>")
               (joined
-                (portRef M_adder3_carry (instanceRef adder4))
-                (portRef M_adder3_carry (instanceRef adder5))
-                (portRef carry (instanceRef adder3))
+                (portRef (member out 1))
+                (portRef O (instanceRef Mmux_out51))
               )
             )
-            (net (rename a_4_ "a<4>")
+            (net (rename io_dip_9__mmx_out3 "io_dip<9>_mmx_out3")
               (joined
-                (portRef (member a 3))
-                (portRef a_0__ (instanceRef adder4))
-                (portRef io_dip_4_IBUF (instanceRef adder5))
+                (portRef io_dip_9__mmx_out3)
+                (portRef I1 (instanceRef Mmux_out41))
+                (portRef I5 (instanceRef Mmux_out31))
               )
             )
-            (net (rename b_4_ "b<4>")
+            (net (rename out_5_ "out<5>")
               (joined
-                (portRef (member b 3))
-                (portRef io_dip_12_IBUF (instanceRef adder4))
-                (portRef io_dip_12_IBUF (instanceRef adder5))
+                (portRef (member out 2))
+                (portRef O (instanceRef Mmux_out41))
               )
             )
-            (net (rename sum_4_ "sum<4>")
+            (net (rename a_1__ "a<1>")
               (joined
-                (portRef (member sum 2))
-                (portRef sum (instanceRef adder4))
+                (portRef a_1__)
+                (portRef I3 (instanceRef Mmux_out81))
+                (portRef I3 (instanceRef Mmux_out11))
+                (portRef I3 (instanceRef Mmux_out31))
+                (portRef I3 (instanceRef Mmux_out6_SW0))
+                (portRef I2 (instanceRef Mmux_out2_SW0))
               )
             )
-            (net (rename a_5_ "a<5>")
+            (net (rename out_1_ "out<1>")
               (joined
-                (portRef (member a 2))
-                (portRef a_0__ (instanceRef adder5))
+                (portRef (member out 6))
+                (portRef O (instanceRef Mmux_out81))
               )
             )
-            (net (rename b_5_ "b<5>")
+            (net (rename a_2__ "a<2>")
               (joined
-                (portRef (member b 2))
-                (portRef io_dip_13_IBUF (instanceRef adder5))
+                (portRef a_2__)
+                (portRef I4 (instanceRef Mmux_out11))
+                (portRef I4 (instanceRef Mmux_out2))
               )
             )
-            (net (rename sum_5_ "sum<5>")
+            (net (rename out_2_ "out<2>")
               (joined
-                (portRef (member sum 1))
-                (portRef sum (instanceRef adder5))
+                (portRef (member out 5))
+                (portRef O (instanceRef Mmux_out11))
               )
             )
-            (net (rename sum_6_ "sum<6>")
+            (net (rename a_3__ "a<3>")
               (joined
-                (portRef (member sum 0))
-                (portRef sum (instanceRef adder6))
+                (portRef a_3__)
+                (portRef I4 (instanceRef Mmux_out31))
+                (portRef I1 (instanceRef Mmux_out6_SW0))
+                (portRef I2 (instanceRef Mmux_out2))
               )
             )
-            (net n
+            (net (rename out_4_ "out<4>")
               (joined
-                (portRef n)
-                (portRef sum (instanceRef adder7))
+                (portRef (member out 3))
+                (portRef O (instanceRef Mmux_out31))
+              )
+            )
+            (net (rename a_5__ "a<5>")
+              (joined
+                (portRef a_5__)
+                (portRef I4 (instanceRef Mmux_out6_SW0))
+              )
+            )
+            (net (rename a_7__ "a<7>")
+              (joined
+                (portRef a_7__)
+                (portRef I5 (instanceRef Mmux_out6_SW0))
+              )
+            )
+            (net N2
+              (joined
+                (portRef I1 (instanceRef Mmux_out6))
+                (portRef O (instanceRef Mmux_out6_SW0))
+              )
+            )
+            (net (rename out_7_ "out<7>")
+              (joined
+                (portRef (member out 0))
+                (portRef O (instanceRef Mmux_out6))
+              )
+            )
+            (net N4
+              (joined
+                (portRef I5 (instanceRef Mmux_out2))
+                (portRef O (instanceRef Mmux_out2_SW0))
+              )
+            )
+            (net (rename out_3_ "out<3>")
+              (joined
+                (portRef (member out 4))
+                (portRef O (instanceRef Mmux_out2))
               )
             )
           )
@@ -1118,89 +520,62 @@
               (viewRef view_1 (cellRef GND (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance Sh3_SW0
+            (instance (rename io_dip_9_51 "io_dip<9>51")
               (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "FFFFFFFFFFFEFFFF") (owner "Xilinx"))
+              (property INIT (string "FD75B931EC64A820") (owner "Xilinx"))
             )
-            (instance Sh3
-              (viewRef view_1 (cellRef LUT6 (libraryRef UNISIMS)))
+            (instance (rename io_dip_9_31 "io_dip<9>31")
+              (viewRef view_1 (cellRef LUT5 (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
-              (property INIT (string "6060606060606075") (owner "Xilinx"))
+              (property INIT (string "8A9BCEDF") (owner "Xilinx"))
             )
-            (instance (rename io_dip_18_IBUF_renamed_0 "io_dip_18_IBUF")
+            (instance (rename io_dip_9_41 "io_dip<9>41")
+              (viewRef view_1 (cellRef LUT5 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property INIT (string "8A9BCEDF") (owner "Xilinx"))
+            )
+            (instance (rename io_dip_10_IBUF_renamed_0 "io_dip_10_IBUF")
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_17_IBUF_renamed_1 "io_dip_17_IBUF")
+            (instance (rename io_dip_9_IBUF_renamed_1 "io_dip_9_IBUF")
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_16_IBUF_renamed_2 "io_dip_16_IBUF")
+            (instance (rename io_dip_8_IBUF_renamed_2 "io_dip_8_IBUF")
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_15_IBUF_renamed_3 "io_dip_15_IBUF")
+            (instance io_dip_7_IBUF
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_14_IBUF_renamed_4 "io_dip_14_IBUF")
+            (instance io_dip_6_IBUF
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_13_IBUF_renamed_5 "io_dip_13_IBUF")
+            (instance io_dip_5_IBUF
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_12_IBUF_renamed_6 "io_dip_12_IBUF")
+            (instance io_dip_4_IBUF
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_11_IBUF_renamed_7 "io_dip_11_IBUF")
+            (instance io_dip_3_IBUF
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_10_IBUF_renamed_8 "io_dip_10_IBUF")
+            (instance io_dip_2_IBUF
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_9_IBUF_renamed_9 "io_dip_9_IBUF")
+            (instance io_dip_1_IBUF
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance (rename io_dip_8_IBUF_renamed_10 "io_dip_8_IBUF")
-              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-            )
-            (instance (rename io_dip_7_IBUF_renamed_11 "io_dip_7_IBUF")
-              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-            )
-            (instance (rename io_dip_6_IBUF_renamed_12 "io_dip_6_IBUF")
-              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-            )
-            (instance (rename io_dip_5_IBUF_renamed_13 "io_dip_5_IBUF")
-              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-            )
-            (instance (rename io_dip_4_IBUF_renamed_14 "io_dip_4_IBUF")
-              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-            )
-            (instance (rename io_dip_3_IBUF_renamed_15 "io_dip_3_IBUF")
-              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-            )
-            (instance (rename io_dip_2_IBUF_renamed_16 "io_dip_2_IBUF")
-              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-            )
-            (instance (rename io_dip_1_IBUF_renamed_17 "io_dip_1_IBUF")
-              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
-              (property XSTLIB (boolean (true)) (owner "Xilinx"))
-            )
-            (instance (rename io_dip_0_IBUF_renamed_18 "io_dip_0_IBUF")
+            (instance io_dip_0_IBUF
               (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
@@ -1280,7 +655,7 @@
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance io_led_16_OBUF
+            (instance (rename io_led_16_OBUF_renamed_3 "io_led_16_OBUF")
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
@@ -1316,35 +691,35 @@
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance io_led_7_OBUF
+            (instance (rename io_led_7_OBUF_renamed_4 "io_led_7_OBUF")
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance io_led_6_OBUF
+            (instance (rename io_led_6_OBUF_renamed_5 "io_led_6_OBUF")
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance io_led_5_OBUF
+            (instance (rename io_led_5_OBUF_renamed_6 "io_led_5_OBUF")
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance io_led_4_OBUF
+            (instance (rename io_led_4_OBUF_renamed_7 "io_led_4_OBUF")
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance io_led_3_OBUF
+            (instance (rename io_led_3_OBUF_renamed_8 "io_led_3_OBUF")
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance io_led_2_OBUF
+            (instance (rename io_led_2_OBUF_renamed_9 "io_led_2_OBUF")
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance io_led_1_OBUF
+            (instance (rename io_led_1_OBUF_renamed_10 "io_led_1_OBUF")
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance io_led_0_OBUF
+            (instance (rename io_led_0_OBUF_renamed_11 "io_led_0_OBUF")
               (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
@@ -1404,191 +779,151 @@
               (viewRef view_1 (cellRef OBUFT (libraryRef UNISIMS)))
               (property XSTLIB (boolean (true)) (owner "Xilinx"))
             )
-            (instance adddr
-              (viewRef view_1 (cellRef mojo_8bitfulladder_2_adddr (libraryRef mojo_top_0_lib)))
-              (property BUS_INFO (string "8:INPUT:a<7:0>") (owner "Xilinx"))
-              (property BUS_INFO (string "8:INPUT:b<7:0>") (owner "Xilinx"))
+            (instance shile
+              (viewRef view_1 (cellRef shifterleft_2_shile (libraryRef mojo_top_0_lib)))
+              (property BUS_INFO (string "3:INPUT:b<2:0>") (owner "Xilinx"))
+              (property BUS_INFO (string "8:OUTPUT:out<7:0>") (owner "Xilinx"))
               (property NLW_UNIQUE_ID (integer 0) (owner "Xilinx"))
               (property NLW_MACRO_TAG (integer 1) (owner "Xilinx"))
-              (property NLW_MACRO_ALIAS (string "mojo_8bitfulladder_2_adddr") (owner "Xilinx"))
+              (property NLW_MACRO_ALIAS (string "shifterleft_2_shile") (owner "Xilinx"))
             )
-            (net io_dip_7_IBUF
+            (net io_led_7_OBUF
               (joined
-                (portRef O (instanceRef io_dip_7_IBUF_renamed_11))
-                (portRef (member a 0) (instanceRef adddr))
+                (portRef O (instanceRef io_dip_7_IBUF))
+                (portRef I (instanceRef io_led_7_OBUF_renamed_4))
+                (portRef a_7__ (instanceRef shile))
               )
             )
-            (net io_dip_6_IBUF
+            (net io_led_6_OBUF
               (joined
-                (portRef O (instanceRef io_dip_6_IBUF_renamed_12))
-                (portRef (member a 1) (instanceRef adddr))
+                (portRef I5 (instanceRef io_dip_9_51))
+                (portRef O (instanceRef io_dip_6_IBUF))
+                (portRef I (instanceRef io_led_6_OBUF_renamed_5))
               )
             )
-            (net io_dip_5_IBUF
+            (net io_led_5_OBUF
               (joined
-                (portRef O (instanceRef io_dip_5_IBUF_renamed_13))
-                (portRef (member a 2) (instanceRef adddr))
+                (portRef I3 (instanceRef io_dip_9_41))
+                (portRef O (instanceRef io_dip_5_IBUF))
+                (portRef I (instanceRef io_led_5_OBUF_renamed_6))
+                (portRef a_5__ (instanceRef shile))
               )
             )
-            (net io_dip_4_IBUF
+            (net io_led_4_OBUF
               (joined
-                (portRef O (instanceRef io_dip_4_IBUF_renamed_14))
-                (portRef (member a 3) (instanceRef adddr))
+                (portRef I4 (instanceRef io_dip_9_51))
+                (portRef I3 (instanceRef io_dip_9_31))
+                (portRef O (instanceRef io_dip_4_IBUF))
+                (portRef I (instanceRef io_led_4_OBUF_renamed_7))
               )
             )
-            (net io_dip_3_IBUF
+            (net io_led_3_OBUF
               (joined
-                (portRef O (instanceRef io_dip_3_IBUF_renamed_15))
-                (portRef (member a 4) (instanceRef adddr))
+                (portRef I4 (instanceRef io_dip_9_41))
+                (portRef O (instanceRef io_dip_3_IBUF))
+                (portRef I (instanceRef io_led_3_OBUF_renamed_8))
+                (portRef a_3__ (instanceRef shile))
               )
             )
-            (net io_dip_2_IBUF
+            (net io_led_2_OBUF
               (joined
-                (portRef O (instanceRef io_dip_2_IBUF_renamed_16))
-                (portRef (member a 5) (instanceRef adddr))
+                (portRef I2 (instanceRef io_dip_9_51))
+                (portRef I4 (instanceRef io_dip_9_31))
+                (portRef O (instanceRef io_dip_2_IBUF))
+                (portRef I (instanceRef io_led_2_OBUF_renamed_9))
+                (portRef a_2__ (instanceRef shile))
               )
             )
-            (net io_dip_1_IBUF
+            (net io_led_1_OBUF
               (joined
-                (portRef O (instanceRef io_dip_1_IBUF_renamed_17))
-                (portRef (member a 6) (instanceRef adddr))
+                (portRef I2 (instanceRef io_dip_9_41))
+                (portRef O (instanceRef io_dip_1_IBUF))
+                (portRef I (instanceRef io_led_1_OBUF_renamed_10))
+                (portRef a_1__ (instanceRef shile))
               )
             )
-            (net io_dip_0_IBUF
+            (net io_led_0_OBUF
               (joined
-                (portRef O (instanceRef io_dip_0_IBUF_renamed_18))
-                (portRef (member a 7) (instanceRef adddr))
-              )
-            )
-            (net io_dip_15_IBUF
-              (joined
-                (portRef O (instanceRef io_dip_15_IBUF_renamed_3))
-                (portRef (member b 0) (instanceRef adddr))
-              )
-            )
-            (net io_dip_14_IBUF
-              (joined
-                (portRef O (instanceRef io_dip_14_IBUF_renamed_4))
-                (portRef (member b 1) (instanceRef adddr))
-              )
-            )
-            (net io_dip_13_IBUF
-              (joined
-                (portRef O (instanceRef io_dip_13_IBUF_renamed_5))
-                (portRef (member b 2) (instanceRef adddr))
-              )
-            )
-            (net io_dip_12_IBUF
-              (joined
-                (portRef O (instanceRef io_dip_12_IBUF_renamed_6))
-                (portRef (member b 3) (instanceRef adddr))
-              )
-            )
-            (net io_dip_11_IBUF
-              (joined
-                (portRef O (instanceRef io_dip_11_IBUF_renamed_7))
-                (portRef (member b 4) (instanceRef adddr))
+                (portRef I3 (instanceRef io_dip_9_51))
+                (portRef I2 (instanceRef io_dip_9_31))
+                (portRef O (instanceRef io_dip_0_IBUF))
+                (portRef I (instanceRef io_led_0_OBUF_renamed_11))
+                (portRef a_0__ (instanceRef shile))
               )
             )
             (net io_dip_10_IBUF
               (joined
-                (portRef O (instanceRef io_dip_10_IBUF_renamed_8))
-                (portRef (member b 5) (instanceRef adddr))
+                (portRef I0 (instanceRef io_dip_9_51))
+                (portRef I0 (instanceRef io_dip_9_31))
+                (portRef I0 (instanceRef io_dip_9_41))
+                (portRef O (instanceRef io_dip_10_IBUF_renamed_0))
+                (portRef (member b 0) (instanceRef shile))
               )
             )
             (net io_dip_9_IBUF
               (joined
-                (portRef O (instanceRef io_dip_9_IBUF_renamed_9))
-                (portRef (member b 6) (instanceRef adddr))
+                (portRef I1 (instanceRef io_dip_9_51))
+                (portRef I1 (instanceRef io_dip_9_31))
+                (portRef I1 (instanceRef io_dip_9_41))
+                (portRef O (instanceRef io_dip_9_IBUF_renamed_1))
+                (portRef (member b 1) (instanceRef shile))
               )
             )
             (net io_dip_8_IBUF
               (joined
-                (portRef O (instanceRef io_dip_8_IBUF_renamed_10))
-                (portRef (member b 7) (instanceRef adddr))
+                (portRef O (instanceRef io_dip_8_IBUF_renamed_2))
+                (portRef (member b 2) (instanceRef shile))
               )
             )
-            (net io_dip_16_IBUF
+            (net (rename M_shile_out_7_ "M_shile_out<7>")
               (joined
-                (portRef O (instanceRef io_dip_16_IBUF_renamed_2))
-                (portRef alufn0 (instanceRef adddr))
-              )
-            )
-            (net io_dip_18_IBUF
-              (joined
-                (portRef I2 (instanceRef Sh3))
-                (portRef O (instanceRef io_dip_18_IBUF_renamed_0))
-              )
-            )
-            (net io_dip_17_IBUF
-              (joined
-                (portRef I4 (instanceRef Sh3_SW0))
-                (portRef O (instanceRef io_dip_17_IBUF_renamed_1))
-              )
-            )
-            (net (rename M_adddr_sum_6_ "M_adddr_sum<6>")
-              (joined
-                (portRef I3 (instanceRef Sh3))
-                (portRef I (instanceRef io_led_14_OBUF))
-                (portRef (member sum 0) (instanceRef adddr))
-              )
-            )
-            (net (rename M_adddr_sum_5_ "M_adddr_sum<5>")
-              (joined
-                (portRef I4 (instanceRef Sh3))
-                (portRef I (instanceRef io_led_13_OBUF))
-                (portRef (member sum 1) (instanceRef adddr))
-              )
-            )
-            (net (rename M_adddr_sum_4_ "M_adddr_sum<4>")
-              (joined
-                (portRef I5 (instanceRef Sh3_SW0))
-                (portRef I (instanceRef io_led_12_OBUF))
-                (portRef (member sum 2) (instanceRef adddr))
-              )
-            )
-            (net (rename M_adddr_sum_3_ "M_adddr_sum<3>")
-              (joined
-                (portRef I1 (instanceRef Sh3_SW0))
-                (portRef I (instanceRef io_led_11_OBUF))
-                (portRef (member sum 3) (instanceRef adddr))
-              )
-            )
-            (net (rename M_adddr_sum_2_ "M_adddr_sum<2>")
-              (joined
-                (portRef I2 (instanceRef Sh3_SW0))
-                (portRef I (instanceRef io_led_10_OBUF))
-                (portRef (member sum 4) (instanceRef adddr))
-              )
-            )
-            (net (rename M_adddr_sum_1_ "M_adddr_sum<1>")
-              (joined
-                (portRef I3 (instanceRef Sh3_SW0))
-                (portRef I (instanceRef io_led_9_OBUF))
-                (portRef (member sum 5) (instanceRef adddr))
-              )
-            )
-            (net (rename M_adddr_sum_0_ "M_adddr_sum<0>")
-              (joined
-                (portRef I0 (instanceRef Sh3_SW0))
-                (portRef I (instanceRef io_led_8_OBUF))
-                (portRef (member sum 6) (instanceRef adddr))
-              )
-            )
-            (net M_adddr_v
-              (joined
-                (portRef I1 (instanceRef Sh3))
-                (portRef v (instanceRef adddr))
-              )
-            )
-            (net M_adddr_n
-              (joined
-                (portRef I0 (instanceRef Sh3))
                 (portRef I (instanceRef io_led_15_OBUF))
-                (portRef n (instanceRef adddr))
+                (portRef (member out 0) (instanceRef shile))
               )
             )
-            (net (rename M_cpr_out_1_ "M_cpr_out<1>")
+            (net (rename M_shile_out_6_ "M_shile_out<6>")
+              (joined
+                (portRef I (instanceRef io_led_14_OBUF))
+                (portRef (member out 1) (instanceRef shile))
+              )
+            )
+            (net (rename M_shile_out_5_ "M_shile_out<5>")
+              (joined
+                (portRef I (instanceRef io_led_13_OBUF))
+                (portRef (member out 2) (instanceRef shile))
+              )
+            )
+            (net (rename M_shile_out_4_ "M_shile_out<4>")
+              (joined
+                (portRef I (instanceRef io_led_12_OBUF))
+                (portRef (member out 3) (instanceRef shile))
+              )
+            )
+            (net (rename M_shile_out_3_ "M_shile_out<3>")
+              (joined
+                (portRef I (instanceRef io_led_11_OBUF))
+                (portRef (member out 4) (instanceRef shile))
+              )
+            )
+            (net (rename M_shile_out_2_ "M_shile_out<2>")
+              (joined
+                (portRef I (instanceRef io_led_10_OBUF))
+                (portRef (member out 5) (instanceRef shile))
+              )
+            )
+            (net (rename M_shile_out_1_ "M_shile_out<1>")
+              (joined
+                (portRef I (instanceRef io_led_9_OBUF))
+                (portRef (member out 6) (instanceRef shile))
+              )
+            )
+            (net (rename M_shile_out_0_ "M_shile_out<0>")
+              (joined
+                (portRef I (instanceRef io_led_8_OBUF))
+                (portRef (member out 7) (instanceRef shile))
+              )
+            )
+            (net io_led_16_OBUF
               (joined
                 (portRef G (instanceRef XST_GND))
                 (portRef I (instanceRef led_7_OBUF))
@@ -1610,14 +945,7 @@
                 (portRef I (instanceRef io_led_19_OBUF))
                 (portRef I (instanceRef io_led_18_OBUF))
                 (portRef I (instanceRef io_led_17_OBUF))
-                (portRef I (instanceRef io_led_7_OBUF))
-                (portRef I (instanceRef io_led_6_OBUF))
-                (portRef I (instanceRef io_led_5_OBUF))
-                (portRef I (instanceRef io_led_4_OBUF))
-                (portRef I (instanceRef io_led_3_OBUF))
-                (portRef I (instanceRef io_led_2_OBUF))
-                (portRef I (instanceRef io_led_1_OBUF))
-                (portRef I (instanceRef io_led_0_OBUF))
+                (portRef I (instanceRef io_led_16_OBUF_renamed_3))
                 (portRef I (instanceRef spi_miso_OBUFT))
                 (portRef I (instanceRef avr_rx_OBUFT))
               )
@@ -1658,7 +986,7 @@
                 (portRef O (instanceRef avr_rx_OBUFT))
               )
             )
-            (net (rename io_led_0__inv "io_led<0>_inv")
+            (net (rename io_led_16__inv "io_led<16>_inv")
               (joined
                 (portRef P (instanceRef XST_VCC))
                 (portRef T (instanceRef spi_channel_3_OBUFT))
@@ -1681,130 +1009,88 @@
                 (portRef T (instanceRef avr_rx_OBUFT))
               )
             )
-            (net (rename M_cpr_out_0_ "M_cpr_out<0>")
+            (net (rename io_dip_9__mmx_out5 "io_dip<9>_mmx_out5")
               (joined
-                (portRef O (instanceRef Sh3))
-                (portRef I (instanceRef io_led_16_OBUF))
+                (portRef O (instanceRef io_dip_9_51))
+                (portRef io_dip_9__mmx_out5 (instanceRef shile))
               )
             )
-            (net N2
+            (net (rename io_dip_9__mmx_out4 "io_dip<9>_mmx_out4")
               (joined
-                (portRef O (instanceRef Sh3_SW0))
-                (portRef I5 (instanceRef Sh3))
+                (portRef O (instanceRef io_dip_9_41))
+                (portRef io_dip_9__mmx_out4 (instanceRef shile))
               )
             )
-            (net (rename io_dip_18_ "io_dip<18>")
+            (net (rename io_dip_9__mmx_out3 "io_dip<9>_mmx_out3")
               (joined
-                (portRef (member io_dip 5))
-                (portRef I (instanceRef io_dip_18_IBUF_renamed_0))
-              )
-            )
-            (net (rename io_dip_17_ "io_dip<17>")
-              (joined
-                (portRef (member io_dip 6))
-                (portRef I (instanceRef io_dip_17_IBUF_renamed_1))
-              )
-            )
-            (net (rename io_dip_16_ "io_dip<16>")
-              (joined
-                (portRef (member io_dip 7))
-                (portRef I (instanceRef io_dip_16_IBUF_renamed_2))
-              )
-            )
-            (net (rename io_dip_15_ "io_dip<15>")
-              (joined
-                (portRef (member io_dip 8))
-                (portRef I (instanceRef io_dip_15_IBUF_renamed_3))
-              )
-            )
-            (net (rename io_dip_14_ "io_dip<14>")
-              (joined
-                (portRef (member io_dip 9))
-                (portRef I (instanceRef io_dip_14_IBUF_renamed_4))
-              )
-            )
-            (net (rename io_dip_13_ "io_dip<13>")
-              (joined
-                (portRef (member io_dip 10))
-                (portRef I (instanceRef io_dip_13_IBUF_renamed_5))
-              )
-            )
-            (net (rename io_dip_12_ "io_dip<12>")
-              (joined
-                (portRef (member io_dip 11))
-                (portRef I (instanceRef io_dip_12_IBUF_renamed_6))
-              )
-            )
-            (net (rename io_dip_11_ "io_dip<11>")
-              (joined
-                (portRef (member io_dip 12))
-                (portRef I (instanceRef io_dip_11_IBUF_renamed_7))
+                (portRef O (instanceRef io_dip_9_31))
+                (portRef io_dip_9__mmx_out3 (instanceRef shile))
               )
             )
             (net (rename io_dip_10_ "io_dip<10>")
               (joined
                 (portRef (member io_dip 13))
-                (portRef I (instanceRef io_dip_10_IBUF_renamed_8))
+                (portRef I (instanceRef io_dip_10_IBUF_renamed_0))
               )
             )
             (net (rename io_dip_9_ "io_dip<9>")
               (joined
                 (portRef (member io_dip 14))
-                (portRef I (instanceRef io_dip_9_IBUF_renamed_9))
+                (portRef I (instanceRef io_dip_9_IBUF_renamed_1))
               )
             )
             (net (rename io_dip_8_ "io_dip<8>")
               (joined
                 (portRef (member io_dip 15))
-                (portRef I (instanceRef io_dip_8_IBUF_renamed_10))
+                (portRef I (instanceRef io_dip_8_IBUF_renamed_2))
               )
             )
             (net (rename io_dip_7_ "io_dip<7>")
               (joined
                 (portRef (member io_dip 16))
-                (portRef I (instanceRef io_dip_7_IBUF_renamed_11))
+                (portRef I (instanceRef io_dip_7_IBUF))
               )
             )
             (net (rename io_dip_6_ "io_dip<6>")
               (joined
                 (portRef (member io_dip 17))
-                (portRef I (instanceRef io_dip_6_IBUF_renamed_12))
+                (portRef I (instanceRef io_dip_6_IBUF))
               )
             )
             (net (rename io_dip_5_ "io_dip<5>")
               (joined
                 (portRef (member io_dip 18))
-                (portRef I (instanceRef io_dip_5_IBUF_renamed_13))
+                (portRef I (instanceRef io_dip_5_IBUF))
               )
             )
             (net (rename io_dip_4_ "io_dip<4>")
               (joined
                 (portRef (member io_dip 19))
-                (portRef I (instanceRef io_dip_4_IBUF_renamed_14))
+                (portRef I (instanceRef io_dip_4_IBUF))
               )
             )
             (net (rename io_dip_3_ "io_dip<3>")
               (joined
                 (portRef (member io_dip 20))
-                (portRef I (instanceRef io_dip_3_IBUF_renamed_15))
+                (portRef I (instanceRef io_dip_3_IBUF))
               )
             )
             (net (rename io_dip_2_ "io_dip<2>")
               (joined
                 (portRef (member io_dip 21))
-                (portRef I (instanceRef io_dip_2_IBUF_renamed_16))
+                (portRef I (instanceRef io_dip_2_IBUF))
               )
             )
             (net (rename io_dip_1_ "io_dip<1>")
               (joined
                 (portRef (member io_dip 22))
-                (portRef I (instanceRef io_dip_1_IBUF_renamed_17))
+                (portRef I (instanceRef io_dip_1_IBUF))
               )
             )
             (net (rename io_dip_0_ "io_dip<0>")
               (joined
                 (portRef (member io_dip 23))
-                (portRef I (instanceRef io_dip_0_IBUF_renamed_18))
+                (portRef I (instanceRef io_dip_0_IBUF))
               )
             )
             (net (rename led_7_ "led<7>")
@@ -1900,7 +1186,7 @@
             (net (rename io_led_16_ "io_led<16>")
               (joined
                 (portRef (member io_led 7))
-                (portRef O (instanceRef io_led_16_OBUF))
+                (portRef O (instanceRef io_led_16_OBUF_renamed_3))
               )
             )
             (net (rename io_led_15_ "io_led<15>")
@@ -1954,49 +1240,49 @@
             (net (rename io_led_7_ "io_led<7>")
               (joined
                 (portRef (member io_led 16))
-                (portRef O (instanceRef io_led_7_OBUF))
+                (portRef O (instanceRef io_led_7_OBUF_renamed_4))
               )
             )
             (net (rename io_led_6_ "io_led<6>")
               (joined
                 (portRef (member io_led 17))
-                (portRef O (instanceRef io_led_6_OBUF))
+                (portRef O (instanceRef io_led_6_OBUF_renamed_5))
               )
             )
             (net (rename io_led_5_ "io_led<5>")
               (joined
                 (portRef (member io_led 18))
-                (portRef O (instanceRef io_led_5_OBUF))
+                (portRef O (instanceRef io_led_5_OBUF_renamed_6))
               )
             )
             (net (rename io_led_4_ "io_led<4>")
               (joined
                 (portRef (member io_led 19))
-                (portRef O (instanceRef io_led_4_OBUF))
+                (portRef O (instanceRef io_led_4_OBUF_renamed_7))
               )
             )
             (net (rename io_led_3_ "io_led<3>")
               (joined
                 (portRef (member io_led 20))
-                (portRef O (instanceRef io_led_3_OBUF))
+                (portRef O (instanceRef io_led_3_OBUF_renamed_8))
               )
             )
             (net (rename io_led_2_ "io_led<2>")
               (joined
                 (portRef (member io_led 21))
-                (portRef O (instanceRef io_led_2_OBUF))
+                (portRef O (instanceRef io_led_2_OBUF_renamed_9))
               )
             )
             (net (rename io_led_1_ "io_led<1>")
               (joined
                 (portRef (member io_led 22))
-                (portRef O (instanceRef io_led_1_OBUF))
+                (portRef O (instanceRef io_led_1_OBUF_renamed_10))
               )
             )
             (net (rename io_led_0_ "io_led<0>")
               (joined
                 (portRef (member io_led 23))
-                (portRef O (instanceRef io_led_0_OBUF))
+                (portRef O (instanceRef io_led_0_OBUF_renamed_11))
               )
             )
             (net (rename io_seg_7_ "io_seg<7>")

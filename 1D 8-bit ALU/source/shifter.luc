@@ -1,0 +1,39 @@
+module shifterleft (
+    input a[8],
+    input b[3],
+    output out[8]
+  ) {
+  
+  sig w[8];
+  sig x[8];
+  sig y[8];
+  sig z[8];
+
+  always {
+    out = 0;
+    w = 0;
+    x = 0;
+    y = 0;
+    z = 0;
+    
+    if (b[2]) {
+      w[7:4] = a[3:0];
+    } else {
+      w = a;
+    }
+    
+    if (b[1]) {
+      x[7:2] = w[5:0];
+    } else {
+      x = w;
+    }
+    
+    if (b[0]) {
+      out[7:1] = x[6:0];
+    } else {
+      out = x;
+    }
+    
+    
+  }
+}

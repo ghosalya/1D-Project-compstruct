@@ -5,10 +5,13 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/8bit_fulladder_2.v" Line 88: Assignment to <arg fmt="%s" index="1">M_adder7_carry</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/shifter_2.v" Line 23: Assignment to <arg fmt="%s" index="1">y</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 69: Assignment to <arg fmt="%s" index="1">rst</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="413" delta="new" >"D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 60: Result of <arg fmt="%d" index="1">8</arg>-bit expression is truncated to fit in <arg fmt="%d" index="2">3</arg>-bit target.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1127" delta="new" >"D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 48: Assignment to <arg fmt="%s" index="1">rst</arg> ignored, since the identifier is never used
 </msg>
 
 <msg type="warning" file="Xst" num="2972" delta="new" >&quot;<arg fmt="%s" index="1">D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v</arg>&quot; line <arg fmt="%d" index="2">33</arg>. All outputs of instance &lt;<arg fmt="%s" index="3">reset_cond</arg>&gt; of block &lt;<arg fmt="%s" index="4">reset_conditioner_1</arg>&gt; are unconnected in block &lt;<arg fmt="%s" index="5">mojo_top_0</arg>&gt;. Underlying logic will be removed.
@@ -17,7 +20,7 @@
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">io_button</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">io_dip&lt;23:19&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">io_dip&lt;23:11&gt;</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">cclk</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -39,9 +42,6 @@
 </msg>
 
 <msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v</arg>&quot; line <arg fmt="%s" index="2">33</arg>: Output port &lt;<arg fmt="%s" index="3">out</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">reset_cond</arg>&gt; is unconnected or connected to loadless signal.
-</msg>
-
-<msg type="info" file="Xst" num="3210" delta="new" >&quot;<arg fmt="%s" index="1">D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/8bit_fulladder_2.v</arg>&quot; line <arg fmt="%s" index="2">85</arg>: Output port &lt;<arg fmt="%s" index="3">carry</arg>&gt; of the instance &lt;<arg fmt="%s" index="4">adder7</arg>&gt; is unconnected or connected to loadless signal.
 </msg>
 
 </messages>
