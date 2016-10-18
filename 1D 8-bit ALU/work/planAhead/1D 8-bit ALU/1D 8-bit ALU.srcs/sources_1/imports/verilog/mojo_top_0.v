@@ -36,15 +36,34 @@ module mojo_top_0 (
     .out(M_reset_cond_out)
   );
   
-  wire [8-1:0] M_boll_out;
-  reg [4-1:0] M_boll_alufn;
-  reg [8-1:0] M_boll_a;
-  reg [8-1:0] M_boll_b;
-  boole8_2 boll (
-    .alufn(M_boll_alufn),
-    .a(M_boll_a),
-    .b(M_boll_b),
-    .out(M_boll_out)
+  wire [8-1:0] M_adddr_sum;
+  wire [1-1:0] M_adddr_z;
+  wire [1-1:0] M_adddr_v;
+  wire [1-1:0] M_adddr_n;
+  reg [8-1:0] M_adddr_a;
+  reg [8-1:0] M_adddr_b;
+  reg [1-1:0] M_adddr_alufn0;
+  mojo_8bitfulladder_2 adddr (
+    .a(M_adddr_a),
+    .b(M_adddr_b),
+    .alufn0(M_adddr_alufn0),
+    .sum(M_adddr_sum),
+    .z(M_adddr_z),
+    .v(M_adddr_v),
+    .n(M_adddr_n)
+  );
+  
+  wire [8-1:0] M_cpr_out;
+  reg [1-1:0] M_cpr_z;
+  reg [1-1:0] M_cpr_v;
+  reg [1-1:0] M_cpr_n;
+  reg [2-1:0] M_cpr_alufn;
+  compare8_3 cpr (
+    .z(M_cpr_z),
+    .v(M_cpr_v),
+    .n(M_cpr_n),
+    .alufn(M_cpr_alufn),
+    .out(M_cpr_out)
   );
   
   always @* begin
@@ -57,9 +76,15 @@ module mojo_top_0 (
     io_led = 24'h000000;
     io_seg = 8'hff;
     io_sel = 4'hf;
-    M_boll_alufn = io_dip[0+0+3-:4];
-    M_boll_a = io_dip[8+7-:8];
-    M_boll_b = io_dip[16+7-:8];
-    io_led[0+7-:8] = M_boll_out;
+    M_adddr_a = io_dip[0+7-:8];
+    M_adddr_b = io_dip[8+7-:8];
+    M_adddr_alufn0 = io_dip[16+0+0-:1];
+    M_cpr_z = M_adddr_z;
+    M_cpr_n = M_adddr_n;
+    M_cpr_v = M_adddr_v;
+    M_cpr_alufn = io_dip[16+1+1-:2];
+    io_led[8+7-:8] = io_dip[8+7-:8];
+    io_led[0+7-:8] = io_dip[0+7-:8];
+    io_led[16+7-:8] = M_cpr_out;
   end
 endmodule

@@ -53,14 +53,16 @@ Netlist Hierarchy                  : rebuilt
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/multiplexer_11.v" into library work
-Parsing module <multiplexer4_11>.
-Analyzing Verilog file "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/boole1_3.v" into library work
-Parsing module <boole1_3>.
+Analyzing Verilog file "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/multiplexer_12.v" into library work
+Parsing module <multiplexer4_12>.
+Analyzing Verilog file "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_fullAdder_4.v" into library work
+Parsing module <mojo_fullAdder_4>.
 Analyzing Verilog file "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/reset_conditioner_1.v" into library work
 Parsing module <reset_conditioner_1>.
-Analyzing Verilog file "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/boole8_2.v" into library work
-Parsing module <boole8_2>.
+Analyzing Verilog file "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/compare8_3.v" into library work
+Parsing module <compare8_3>.
+Analyzing Verilog file "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/8bit_fulladder_2.v" into library work
+Parsing module <mojo_8bitfulladder_2>.
 Analyzing Verilog file "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" into library work
 Parsing module <mojo_top_0>.
 
@@ -72,12 +74,16 @@ Elaborating module <mojo_top_0>.
 
 Elaborating module <reset_conditioner_1>.
 
-Elaborating module <boole8_2>.
+Elaborating module <mojo_8bitfulladder_2>.
 
-Elaborating module <boole1_3>.
+Elaborating module <mojo_fullAdder_4>.
+WARNING:HDLCompiler:1127 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/8bit_fulladder_2.v" Line 88: Assignment to M_adder7_carry ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 50: Assignment to M_adddr_sum ignored, since the identifier is never used
 
-Elaborating module <multiplexer4_11>.
-WARNING:HDLCompiler:1127 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 50: Assignment to rst ignored, since the identifier is never used
+Elaborating module <compare8_3>.
+
+Elaborating module <multiplexer4_12>.
+WARNING:HDLCompiler:1127 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 69: Assignment to rst ignored, since the identifier is never used
 WARNING:Xst:2972 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" line 33. All outputs of instance <reset_cond> of block <reset_conditioner_1> are unconnected in block <mojo_top_0>. Underlying logic will be removed.
 
 =========================================================================
@@ -87,7 +93,7 @@ WARNING:Xst:2972 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/
 Synthesizing Unit <mojo_top_0>.
     Related source file is "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v".
 WARNING:Xst:647 - Input <io_button> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:647 - Input <io_dip<7:4>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <io_dip<23:19>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <cclk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_ss> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <spi_mosi> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -95,43 +101,51 @@ WARNING:Xst:647 - Input <spi_sck> is never used. This port will be preserved and
 WARNING:Xst:647 - Input <avr_tx> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 INFO:Xst:3210 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" line 33: Output port <out> of the instance <reset_cond> is unconnected or connected to loadless signal.
-    Found 1-bit tristate buffer for signal <spi_miso> created at line 50
-    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 50
-    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 50
-    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 50
-    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 50
-    Found 1-bit tristate buffer for signal <avr_rx> created at line 50
+INFO:Xst:3210 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" line 46: Output port <sum> of the instance <adddr> is unconnected or connected to loadless signal.
+    Found 1-bit tristate buffer for signal <spi_miso> created at line 69
+    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 69
+    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 69
+    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 69
+    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 69
+    Found 1-bit tristate buffer for signal <avr_rx> created at line 69
     Summary:
 	inferred   6 Tristate(s).
 Unit <mojo_top_0> synthesized.
 
-Synthesizing Unit <boole8_2>.
-    Related source file is "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/boole8_2.v".
+Synthesizing Unit <mojo_8bitfulladder_2>.
+    Related source file is "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/8bit_fulladder_2.v".
+INFO:Xst:3210 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/8bit_fulladder_2.v" line 85: Output port <carry> of the instance <adder7> is unconnected or connected to loadless signal.
     Summary:
 	no macro.
-Unit <boole8_2> synthesized.
+Unit <mojo_8bitfulladder_2> synthesized.
 
-Synthesizing Unit <boole1_3>.
-    Related source file is "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/boole1_3.v".
+Synthesizing Unit <mojo_fullAdder_4>.
+    Related source file is "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_fullAdder_4.v".
     Summary:
-	no macro.
-Unit <boole1_3> synthesized.
+Unit <mojo_fullAdder_4> synthesized.
 
-Synthesizing Unit <multiplexer4_11>.
-    Related source file is "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/multiplexer_11.v".
+Synthesizing Unit <compare8_3>.
+    Related source file is "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/compare8_3.v".
+    Summary:
+Unit <compare8_3> synthesized.
+
+Synthesizing Unit <multiplexer4_12>.
+    Related source file is "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/multiplexer_12.v".
     Found 7-bit shifter logical right for signal <n0003> created at line 16
     Summary:
 	inferred   1 Combinational logic shifter(s).
-Unit <multiplexer4_11> synthesized.
+Unit <multiplexer4_12> synthesized.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# Logic shifters                                       : 8
- 7-bit shifter logical right                           : 8
+# Logic shifters                                       : 1
+ 7-bit shifter logical right                           : 1
 # Tristates                                            : 6
  1-bit tristate buffer                                 : 6
+# Xors                                                 : 17
+ 1-bit xor2                                            : 17
 
 =========================================================================
 
@@ -144,8 +158,10 @@ Macro Statistics
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# Logic shifters                                       : 8
- 7-bit shifter logical right                           : 8
+# Logic shifters                                       : 1
+ 7-bit shifter logical right                           : 1
+# Xors                                                 : 17
+ 1-bit xor2                                            : 17
 
 =========================================================================
 
@@ -154,6 +170,8 @@ Macro Statistics
 =========================================================================
 
 Optimizing unit <mojo_top_0> ...
+
+Optimizing unit <mojo_8bitfulladder_2> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -186,12 +204,14 @@ Top Level Output File Name         : mojo_top_0.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 10
+# BELS                             : 12
 #      GND                         : 1
-#      LUT6                        : 8
+#      LUT3                        : 1
+#      LUT5                        : 6
+#      LUT6                        : 3
 #      VCC                         : 1
-# IO Buffers                       : 70
-#      IBUF                        : 20
+# IO Buffers                       : 69
+#      IBUF                        : 19
 #      OBUF                        : 44
 #      OBUFT                       : 6
 
@@ -202,19 +222,19 @@ Selected Device : 6slx9tqg144-2
 
 
 Slice Logic Utilization: 
- Number of Slice LUTs:                    8  out of   5720     0%  
-    Number used as Logic:                 8  out of   5720     0%  
+ Number of Slice LUTs:                   10  out of   5720     0%  
+    Number used as Logic:                10  out of   5720     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:      8
-   Number with an unused Flip Flop:       8  out of      8   100%  
-   Number with an unused LUT:             0  out of      8     0%  
-   Number of fully used LUT-FF pairs:     0  out of      8     0%  
+ Number of LUT Flip Flop pairs used:     10
+   Number with an unused Flip Flop:      10  out of     10   100%  
+   Number with an unused LUT:             0  out of     10     0%  
+   Number of fully used LUT-FF pairs:     0  out of     10     0%  
    Number of unique control sets:         0
 
 IO Utilization: 
  Number of IOs:                          87
- Number of bonded IOBs:                  70  out of    102    68%  
+ Number of bonded IOBs:                  69  out of    102    67%  
 
 Specific Feature Utilization:
 
@@ -249,7 +269,7 @@ Speed Grade: -2
    Minimum period: No path found
    Minimum input arrival time before clock: No path found
    Maximum output required time after clock: No path found
-   Maximum combinational path delay: 6.549ns
+   Maximum combinational path delay: 11.029ns
 
 Timing Details:
 ---------------
@@ -257,24 +277,36 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 48 / 8
+  Total number of paths / destination ports: 94 / 17
 -------------------------------------------------------------------------
-Delay:               6.549ns (Levels of Logic = 4)
-  Source:            io_dip<3> (PAD)
-  Destination:       io_led<7> (PAD)
+Delay:               11.029ns (Levels of Logic = 12)
+  Source:            io_dip<1> (PAD)
+  Destination:       io_led<16> (PAD)
 
-  Data Path: io_dip<3> to io_led<7>
+  Data Path: io_dip<1> to io_led<16>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             8   1.328   1.374  io_dip_3_IBUF (io_dip_3_IBUF)
-     begin scope: 'boll:alufn<3>'
-     LUT6:I1->O            1   0.254   0.681  Sh101 (out<1>)
-     end scope: 'boll:out<1>'
-     OBUF:I->O                 2.912          io_led_1_OBUF (io_led<1>)
+     IBUF:I->O             3   1.328   1.196  io_dip_1_IBUF (io_led_1_OBUF)
+     begin scope: 'adddr:a<1>'
+     begin scope: 'adddr/adder1:a<0>'
+     LUT5:I0->O            2   0.254   0.834  carry1 (carry)
+     end scope: 'adddr/adder1:carry'
+     begin scope: 'adddr/adder3:a<2>'
+     LUT5:I3->O            2   0.250   0.834  carry1 (carry)
+     end scope: 'adddr/adder3:carry'
+     begin scope: 'adddr/adder5:a<2>'
+     LUT5:I3->O            3   0.250   0.874  carry1 (carry)
+     end scope: 'adddr/adder5:carry'
+     begin scope: 'adddr/adder7:a<2>'
+     LUT5:I3->O            1   0.250   1.112  Mxor_sum_xo<0>1 (sum)
+     end scope: 'adddr/adder7:sum'
+     end scope: 'adddr:n'
+     LUT6:I1->O            1   0.254   0.681  Sh35 (M_cpr_out<0>)
+     OBUF:I->O                 2.912          io_led_16_OBUF (io_led<16>)
     ----------------------------------------
-    Total                      6.549ns (4.494ns logic, 2.055ns route)
-                                       (68.6% logic, 31.4% route)
+    Total                     11.029ns (5.498ns logic, 5.531ns route)
+                                       (49.9% logic, 50.1% route)
 
 =========================================================================
 
@@ -285,13 +317,13 @@ Cross Clock Domains Report:
 
 
 Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.74 secs
+Total CPU time to Xst completion: 5.14 secs
  
 --> 
 
-Total memory usage is 296852 kilobytes
+Total memory usage is 296148 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   10 (   0 filtered)
-Number of infos    :    1 (   0 filtered)
+Number of warnings :   12 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
 

@@ -1,0 +1,22 @@
+module compare8 (
+    input z,
+    input v,
+    input n,
+    input alufn[2],
+    output out[8]
+  ) {
+  
+  multiplexer4 muxx;
+
+  always {
+    out = 0;
+    muxx.a[0] = 0;
+    muxx.a[1] = z;
+    muxx.a[2] = (n ^ v);
+    muxx.a[3] = z | (n ^ v);
+    muxx.sel = alufn;
+    out[0] = muxx.out;
+    
+    
+  }
+}
