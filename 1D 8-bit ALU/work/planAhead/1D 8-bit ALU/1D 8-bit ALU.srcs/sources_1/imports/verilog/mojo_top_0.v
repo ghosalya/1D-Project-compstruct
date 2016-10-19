@@ -39,9 +39,11 @@ module mojo_top_0 (
   wire [8-1:0] M_shile_out;
   reg [8-1:0] M_shile_a;
   reg [3-1:0] M_shile_b;
-  shifterleft_2 shile (
+  reg [2-1:0] M_shile_alufn;
+  shifter_2 shile (
     .a(M_shile_a),
     .b(M_shile_b),
+    .alufn(M_shile_alufn),
     .out(M_shile_out)
   );
   
@@ -57,7 +59,8 @@ module mojo_top_0 (
     io_sel = 4'hf;
     M_shile_a = io_dip[0+7-:8];
     io_led[0+7-:8] = io_dip[0+7-:8];
-    M_shile_b = io_dip[8+7-:8];
+    M_shile_b = io_dip[8+0+2-:3];
+    M_shile_alufn = io_dip[16+0+1-:2];
     io_led[8+7-:8] = M_shile_out;
   end
 endmodule

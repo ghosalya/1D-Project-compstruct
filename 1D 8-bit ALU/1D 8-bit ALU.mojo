@@ -5,10 +5,11 @@
     <src>mojo_fullAdder.luc</src>
     <src>multiplexer.luc</src>
     <src>boole1.luc</src>
-    <src>shifter.luc</src>
     <src>compare8.luc</src>
+    <src>shifter.luc</src>
     <src>boole8.luc</src>
     <src top="true">mojo_top.luc</src>
+    <src>flipper.luc</src>
     <ucf lib="true">io_shield.ucf</ucf>
     <ucf lib="true">mojo.ucf</ucf>
     <component>reset_conditioner.luc</component>

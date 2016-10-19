@@ -4,13 +4,16 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module shifterleft_2 (
+module shifter_2 (
     input [7:0] a,
     input [2:0] b,
+    input [1:0] alufn,
     output reg [7:0] out
   );
   
   
+  
+  reg [7:0] na;
   
   reg [7:0] w;
   
@@ -18,18 +21,35 @@ module shifterleft_2 (
   
   reg [7:0] y;
   
-  reg [7:0] z;
+  wire [8-1:0] M_flip_out;
+  reg [8-1:0] M_flip_a;
+  flipper8_3 flip (
+    .a(M_flip_a),
+    .out(M_flip_out)
+  );
+  
+  wire [8-1:0] M_flip2_out;
+  reg [8-1:0] M_flip2_a;
+  flipper8_3 flip2 (
+    .a(M_flip2_a),
+    .out(M_flip2_out)
+  );
   
   always @* begin
-    out = 1'h0;
-    w = 1'h0;
-    x = 1'h0;
-    y = 1'h0;
-    z = 1'h0;
-    if (b[2+0-:1]) begin
-      w[4+3-:4] = a[0+3-:4];
+    M_flip_a = a;
+    out = {4'h8{alufn[1+0-:1] & a[7+0-:1]}};
+    w = {4'h8{alufn[1+0-:1] & a[7+0-:1]}};
+    x = {4'h8{alufn[1+0-:1] & a[7+0-:1]}};
+    y = {4'h8{alufn[1+0-:1] & a[7+0-:1]}};
+    if (alufn[0+0-:1]) begin
+      na = M_flip_out;
     end else begin
-      w = a;
+      na = a;
+    end
+    if (b[2+0-:1]) begin
+      w[4+3-:4] = na[0+3-:4];
+    end else begin
+      w = na;
     end
     if (b[1+0-:1]) begin
       x[2+5-:6] = w[0+5-:6];
@@ -37,9 +57,15 @@ module shifterleft_2 (
       x = w;
     end
     if (b[0+0-:1]) begin
-      out[1+6-:7] = x[0+6-:7];
+      y[1+6-:7] = x[0+6-:7];
     end else begin
-      out = x;
+      y = x;
+    end
+    M_flip2_a = y;
+    if (alufn[0+0-:1]) begin
+      out = M_flip2_out;
+    end else begin
+      out = y;
     end
   end
 endmodule

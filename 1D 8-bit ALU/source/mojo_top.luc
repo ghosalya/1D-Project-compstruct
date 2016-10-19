@@ -31,7 +31,7 @@ module mojo_top (
     reset_conditioner reset_cond;
   }
   
-  shifterleft shile;
+  shifter shile;
   
   always {
 
@@ -50,7 +50,8 @@ module mojo_top (
     
     shile.a = io_dip[0];
     io_led[0] = io_dip[0];
-    shile.b = io_dip[1];
+    shile.b = io_dip[1][2:0];
+    shile.alufn = io_dip[2][1:0];
     io_led[1] = shile.out;
     
     

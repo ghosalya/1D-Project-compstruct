@@ -1,0 +1,16 @@
+module flipper8 (
+    input a[8],
+    output out[8]
+  ) {
+
+  always {
+    out[0] = a[7];
+    out[1] = a[6];
+    out[2] = a[5];
+    out[3] = a[4];
+    out[4] = a[3];
+    out[5] = a[2];
+    out[6] = a[1];
+    out[7] = a[0];
+  }
+}

@@ -5,7 +5,7 @@ set device xc6slx9-2tqg144
 if {[file exists "$projDir/$projName"]} { file delete -force "$projDir/$projName" }
 create_project $projName "$projDir/$projName" -part $device
 set_property design_mode RTL [get_filesets sources_1]
-set verilogSources [list "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/verilog/mojo_top_0.v" "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/verilog/reset_conditioner_1.v" "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/verilog/shifter_2.v"]
+set verilogSources [list "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/verilog/mojo_top_0.v" "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/verilog/reset_conditioner_1.v" "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/verilog/shifter_2.v" "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/verilog/flipper_3.v" "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/verilog/flipper_3.v"]
 import_files -fileset [get_filesets sources_1] -force -norecurse $verilogSources
 set ucfSources [list  "C:/Program\ Files/Mojo\ IDE/library/components/io_shield.ucf" "C:/Program\ Files/Mojo\ IDE/library/components/mojo.ucf"]
 import_files -fileset [get_filesets constrs_1] -force -norecurse $ucfSources

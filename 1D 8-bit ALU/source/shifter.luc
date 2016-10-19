@@ -1,25 +1,35 @@
-module shifterleft (
+module shifter (
     input a[8],
     input b[3],
+    input alufn[2],
     output out[8]
   ) {
-  
+  sig na[8];
   sig w[8];
   sig x[8];
   sig y[8];
-  sig z[8];
+  flipper8 flip;
+  flipper8 flip2;
 
   always {
-    out = 0;
-    w = 0;
-    x = 0;
-    y = 0;
-    z = 0;
+    flip.a = a;
+    out = 8x{alufn[1] & a[7]};
+    w = 8x{alufn[1] & a[7]};
+    x = 8x{alufn[1] & a[7]};
+    y = 8x{alufn[1] & a[7]}; //in case of SRA
+    
+    if (alufn[0]) {
+      na = flip.out;
+      
+    }
+    else {
+      na = a;
+      }
     
     if (b[2]) {
-      w[7:4] = a[3:0];
+      w[7:4] = na[3:0];
     } else {
-      w = a;
+      w = na;
     }
     
     if (b[1]) {
@@ -29,10 +39,19 @@ module shifterleft (
     }
     
     if (b[0]) {
-      out[7:1] = x[6:0];
+      y[7:1] = x[6:0];
     } else {
-      out = x;
+      y = x;
     }
+    
+    flip2.a = y;
+    
+    if (alufn[0]) {
+      out = flip2.out;
+    }
+    else {
+      out = y;
+      }
     
     
   }
