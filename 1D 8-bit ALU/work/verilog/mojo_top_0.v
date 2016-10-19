@@ -36,15 +36,15 @@ module mojo_top_0 (
     .out(M_reset_cond_out)
   );
   
-  wire [8-1:0] M_shile_out;
-  reg [8-1:0] M_shile_a;
-  reg [3-1:0] M_shile_b;
-  reg [2-1:0] M_shile_alufn;
-  shifter_2 shile (
-    .a(M_shile_a),
-    .b(M_shile_b),
-    .alufn(M_shile_alufn),
-    .out(M_shile_out)
+  wire [8-1:0] M_alle_out;
+  reg [8-1:0] M_alle_a;
+  reg [8-1:0] M_alle_b;
+  reg [8-1:0] M_alle_alufn;
+  alu8_2 alle (
+    .a(M_alle_a),
+    .b(M_alle_b),
+    .alufn(M_alle_alufn),
+    .out(M_alle_out)
   );
   
   always @* begin
@@ -57,10 +57,9 @@ module mojo_top_0 (
     io_led = 24'h000000;
     io_seg = 8'hff;
     io_sel = 4'hf;
-    M_shile_a = io_dip[0+7-:8];
-    io_led[0+7-:8] = io_dip[0+7-:8];
-    M_shile_b = io_dip[8+0+2-:3];
-    M_shile_alufn = io_dip[16+0+1-:2];
-    io_led[8+7-:8] = M_shile_out;
+    M_alle_a = io_dip[0+7-:8];
+    M_alle_b = io_dip[8+7-:8];
+    M_alle_alufn = io_dip[16+7-:8];
+    io_led[8+7-:8] = M_alle_out;
   end
 endmodule

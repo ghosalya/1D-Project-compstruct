@@ -1,0 +1,41 @@
+module alu8 (
+    input a[8],
+    input b[8],
+    input alufn[8],
+    output out[8]
+  ) {
+  
+  mux4_8bit muxx;
+  mojo_8bitfulladder add;
+  shifter shift;
+  compare8 cpr;
+  boole8 boll;
+  
+  always {
+    add.a = a;
+    add.b = b;
+    add.alufn0 = alufn[0];
+    
+    shift.a = a;
+    shift.b = b;
+    shift.alufn = alufn[1:0];
+    
+    cpr.v = add.v;
+    cpr.z = add.z;
+    cpr.n = add.n;
+    cpr.alufn = alufn[2:1];
+    
+    boll.a = a;
+    boll.b = b;
+    boll.alufn = alufn[3:0];
+    
+    muxx.a[0] = add.sum;
+    muxx.a[1] = boll.out;
+    muxx.a[2] = shift.out;
+    muxx.a[3] = cpr.out;
+    
+    muxx.sel = alufn[5:4];
+    out = muxx.out;
+    
+  }
+}

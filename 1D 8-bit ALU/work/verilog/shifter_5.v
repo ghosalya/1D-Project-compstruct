@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module shifter_2 (
+module shifter_5 (
     input [7:0] a,
     input [2:0] b,
     input [1:0] alufn,
@@ -23,14 +23,14 @@ module shifter_2 (
   
   wire [8-1:0] M_flip_out;
   reg [8-1:0] M_flip_a;
-  flipper8_3 flip (
+  flipper8_16 flip (
     .a(M_flip_a),
     .out(M_flip_out)
   );
   
   wire [8-1:0] M_flip2_out;
   reg [8-1:0] M_flip2_a;
-  flipper8_3 flip2 (
+  flipper8_16 flip2 (
     .a(M_flip2_a),
     .out(M_flip2_out)
   );
