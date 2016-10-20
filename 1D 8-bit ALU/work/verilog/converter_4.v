@@ -27,10 +27,16 @@ module converter_4 (
   
   integer ones;
   
+  reg [7:0] binaryInp;
+  
   always @* begin
+    binaryInp = binaryInput;
+    if (binaryInput[7+0-:1]) begin
+      binaryInp = (~binaryInput) + 1'h1;
+    end
     binarySum = 1'h0;
     for (i = 1'h0; i < 4'h8; i = i + 1) begin
-      currentDigit = binaryInput[(i)*1+0-:1];
+      currentDigit = binaryInp[(i)*1+0-:1];
       multiplier = 1'h1;
       for (j = 1'h0; j < i; j = j + 1) begin
         multiplier = multiplier * 2'h2;

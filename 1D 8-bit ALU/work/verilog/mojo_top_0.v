@@ -35,16 +35,33 @@ module mojo_top_0 (
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
   );
+  wire [7-1:0] M_seg_seg;
+  wire [4-1:0] M_seg_sel;
+  reg [16-1:0] M_seg_values;
+  multi_seven_seg_2 seg (
+    .clk(clk),
+    .rst(rst),
+    .values(M_seg_values),
+    .seg(M_seg_seg),
+    .sel(M_seg_sel)
+  );
   
   wire [8-1:0] M_alle_out;
   reg [8-1:0] M_alle_a;
   reg [8-1:0] M_alle_b;
   reg [8-1:0] M_alle_alufn;
-  alu8_2 alle (
+  alu8_3 alle (
     .a(M_alle_a),
     .b(M_alle_b),
     .alufn(M_alle_alufn),
     .out(M_alle_out)
+  );
+  
+  wire [16-1:0] M_conv_decimalOutput;
+  reg [8-1:0] M_conv_binaryInput;
+  converter_4 conv (
+    .binaryInput(M_conv_binaryInput),
+    .decimalOutput(M_conv_decimalOutput)
   );
   
   always @* begin
@@ -55,11 +72,12 @@ module mojo_top_0 (
     spi_channel = 4'bzzzz;
     avr_rx = 1'bz;
     io_led = 24'h000000;
-    io_seg = 8'hff;
-    io_sel = 4'hf;
+    io_seg = ~M_seg_seg;
+    io_sel = ~M_seg_sel;
     M_alle_a = io_dip[0+7-:8];
     M_alle_b = io_dip[8+7-:8];
     M_alle_alufn = io_dip[16+7-:8];
-    io_led[8+7-:8] = M_alle_out;
+    M_conv_binaryInput = M_alle_out;
+    M_seg_values = M_conv_decimalOutput;
   end
 endmodule

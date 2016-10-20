@@ -11,12 +11,19 @@ module converter (
   var hundreds;
   var tens;
   var ones;
+  sig binaryInp[8];
   
   always {
     // binary to decimal conversion
+    binaryInp = binaryInput;
+    
+    if (binaryInput[7]) {
+      binaryInp = (~binaryInput) + 1;
+    } 
+    
     binarySum = 0;
     for (i=0;i<8;i++){
-      currentDigit = binaryInput[i];
+      currentDigit = binaryInp[i];
       multiplier = 1;
       for (j=0;j<i;j++){
         multiplier = multiplier*2;

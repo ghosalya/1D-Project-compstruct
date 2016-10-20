@@ -12,8 +12,8 @@
     <src top="true">mojo_top.luc</src>
     <src>flipper.luc</src>
     <src>8bit_fulladder.luc</src>
-    <src>autoTesting.luc</src>
     <src>shifter.luc</src>
+    <src>autoTesting.luc</src>
     <src>seven_seg.luc</src>
     <src>converter.luc</src>
     <ucf lib="true">io_shield.ucf</ucf>

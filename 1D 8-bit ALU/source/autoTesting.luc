@@ -72,6 +72,7 @@ module autoTesting (
     case (testState.q) {
       testState.IDLE:
           if (start) {
+        resetter = 1;
         testState.d = testState.ADD;
         }
         
@@ -174,6 +175,12 @@ module autoTesting (
       num.d = num.q + 1;
     }
     
-    out = alu.out;
+    if (testState.ERROR) {
+      out = num.q;
+    } else {
+      out = alu.out;
+    }
+    
+    
  }
 }
