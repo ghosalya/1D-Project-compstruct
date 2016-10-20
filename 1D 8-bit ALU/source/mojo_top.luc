@@ -30,18 +30,39 @@ module mojo_top (
     // clock. This ensures the entire FPGA comes out of reset at the same time.
     reset_conditioner reset_cond;
     
+    
     .rst(rst){
       multi_seven_seg seg;
+      //autoTesting atester;
     }
   } 
   
-  alu8 alle;
+  alu8 alu;
   converter conv;
   
+  //autoTesting
+  sig shiftconst[8];
+  sig out[8];
+  fsm testState (.clk(clk)) = {IDLE, ADD, SUB, AND, OR, XOR, A, SHL, SHR, SRA, CMPEQ, CMPLT, CMPLE, ERROR, DONE};
+  dff num[25] (.clk(clk), .rst(rst));
+ 
+  dff errorA[8] (.clk(clk), .rst(rst));
+  dff errorB[8] (.clk(clk), .rst(rst));
+  dff errorFN[8] (.clk(clk), .rst(rst));
+  dff errRes[8] (.clk(clk), .rst(rst));
+  
+  
   always {
+    //atester.start = io_dip[2][7];
+    //atester.clk = clk;
 
     reset_cond.in = ~rst_n; // input raw inverted reset signal
     rst = reset_cond.out;   // conditioned reset
+    //atester.rst = rst;
+    errorA.d = errorA.q;
+    errorB.d = errorB.q;
+    errorFN.d = errorFN.q;
+    errRes.d = errRes.q;
     
     led = 8h00;             // turn LEDs off
     spi_miso = bz;          // not using SPI
@@ -54,12 +75,373 @@ module mojo_top (
     io_seg = ~seg.seg; // connect segments to the driver
     io_sel = ~seg.sel; // first digit only
     
-    alle.a = io_dip[0];
-    alle.b = io_dip[1];
-    alle.alufn = io_dip[2];
+    //------------ AUTOTESTING BLOCK ---------------//
+    alu.a = num.q[15:8];
+    alu.b = num.q[23:16];
+    alu.alufn = 0;
+    shiftconst = 0;
+    
+    //setting output
+    case (testState.q) {
+      testState.IDLE:
+          out = 0;
+        
+      testState.ADD:
+          alu.alufn = 8b00000000;
+          io_led[0][0] = 1;
+      
+      testState.SUB:
+          alu.alufn = 8b00000001;
+          io_led[0][1] = 1;
+        
+      testState.AND:
+          alu.alufn = 8b00011000;
+          io_led[0][2] = 1;
+        
+      testState.OR:
+          alu.alufn = 8b00011110;
+          io_led[0][3] = 1;
+        
+      testState.XOR:
+          alu.alufn = 8b00010110;
+          io_led[0][4] = 1;
+        
+      testState.A:
+          alu.alufn = 8b00011010;
+          io_led[0][5] = 1;
+        
+      testState.SHL:
+          alu.alufn = 8b00100000;
+          io_led[0][6] = 1;
+        
+      testState.SHR:
+          alu.alufn = 8b00100001;
+          io_led[0][7] = 1;
+        
+      testState.SRA:
+          alu.alufn = 8b00100011;
+          io_led[0][1:0] = 1;
+        
+      testState.CMPEQ:
+          alu.alufn = 8b00110011;
+          io_led[0][2:0] = 1;
+        
+      testState.CMPLT:
+          alu.alufn = 8b00110101;
+          io_led[0][4:0] = 1;
+        
+      testState.CMPLE:
+          alu.alufn = 8b00110111;
+          io_led[0][6:0] = 1;
+        
+      testState.DONE:
+          io_led[1] = 8b11111111;
+          out = 77;
+        
+      testState.ERROR:
+          io_led[0] = errorA.q;
+          io_led[1] = errorB.q;
+          io_led[2] = errorFN.q;
+  
+    }
+    
+    //changing state
+    case (testState.q) {
+      testState.IDLE:
+          if (io_dip[2][7]) {
+        //rst = 1;
+        testState.d = testState.ADD;
+        }
+        
+      testState.ADD:
+          if (alu.out != num.q[15:8] + num.q[23:16]) {
+              testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00000000;
+              errRes.d = alu.out;
+          } else if (num.q[24] == 1 & num.q[23:0] == 0) {
+              testState.d = testState.SUB;
+              rst=1;
+        }
+        
+      
+      testState.SUB:
+          if (alu.out != num.q[15:8] - num.q[23:16]) {
+              testState.d = testState.ERROR;
+          errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00000001;
+          errRes.d = alu.out;
+          } else if (num.q[24] == 1 & num.q[23:0] == 0) {
+              testState.d = testState.AND;
+              rst=1;
+        }
+        
+      testState.AND:
+          if (alu.out != (num.q[15:8] & num.q[23:16])) {
+              testState.d = testState.ERROR;
+          errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00011000;
+          errRes.d = alu.out;
+          } else if (num.q[24] == 1 & num.q[23:0] == 0) {
+              testState.d = testState.OR;
+              rst=1;
+        }
+        
+      testState.OR:
+          if (alu.out != (num.q[15:8] | num.q[23:16])) {
+              testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00011110;
+          errRes.d = alu.out;
+          } else if (num.q[24] == 1 & num.q[23:0] == 0) {
+              testState.d = testState.XOR;
+              rst=1;
+        }
+        
+      testState.XOR:
+          if (alu.out != (num.q[15:8] ^ num.q[23:16])) {
+              testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00010110;
+          errRes.d = alu.out;
+          } else if (num.q[24] == 1 & num.q[23:0] == 0) {
+              testState.d = testState.A;
+              rst=1;
+        }
+        
+      testState.A:
+          if (alu.out != num.q[15:8] ) {
+              testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00011010;
+          errRes.d = alu.out;
+          } else if (num.q[24] == 1 & num.q[23:0] == 0) {
+              testState.d = testState.SHL;
+              rst=1;
+        }
+        
+      testState.SHL:
+      shiftconst = 8b00000000;
+      case(num.q[18:16]) {
+            000:
+              shiftconst = num.q[15:8];
+            
+            001:
+              shiftconst[7:1] = num.q[14:8];
+            
+            010:
+              shiftconst[7:2] = num.q[13:8];
+            
+            011:
+              shiftconst[7:3] = num.q[12:8];
+            
+            100:
+              shiftconst[7:4] = num.q[11:8];
+            
+            101:
+              shiftconst[7:5] = num.q[10:8];
+            
+            110:
+              shiftconst[7:6] = num.q[9:8];
+            
+            111:
+              shiftconst[7] = num.q[15:8];
+            
+          }
+
+          if (alu.out != shiftconst) {
+            testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00100000;
+          errRes.d = alu.out;
+          
+        } else if (num.q[19]==1) {
+              testState.d = testState.SHR;
+              rst=1;
+        }
+        
+        
+      testState.SHR:
+          shiftconst = 8b00000000;
+          case(num.q[18:16]) {
+            000:
+              shiftconst = num.q[15:8];
+            
+            001:
+              shiftconst[6:0] = num.q[15:9];
+            
+            010:
+              shiftconst[5:0] = num.q[15:10];
+            
+            011:
+              shiftconst[4:0] = num.q[15:11];
+            
+            100:
+              shiftconst[3:0] = num.q[15:12];
+            
+            101:
+              shiftconst[2:0] = num.q[15:13];
+            
+            110:
+              shiftconst[1:0] = num.q[15:14];
+            
+            111:
+              shiftconst[0] = num.q[15];
+            
+          }
+          if (alu.out != shiftconst) {
+            testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00100001;
+          errRes.d = alu.out;
+        } else if (num.q[19]==1) {
+              testState.d = testState.SRA;
+              rst=1;
+        }
+        
+      testState.SRA:
+          case(num.q[18:16]) {
+            000:
+              shiftconst = num.q[15:8];
+            
+            001:
+              shiftconst[7] = num.q[15];
+              shiftconst[6:0] = num.q[15:9];
+            
+            010:
+              shiftconst[7:6] = 2x{num.q[15]};
+              shiftconst[5:0] = num.q[15:10];
+            
+            011:
+              shiftconst[7:5] = 3x{num.q[15]};
+              shiftconst[4:0] = num.q[15:11];
+            
+            100:
+              shiftconst[7:4] = 4x{num.q[15]};
+              shiftconst[3:0] = num.q[15:12];
+            
+            101:
+              shiftconst[7:3] = 5x{num.q[15]};
+              shiftconst[2:0] = num.q[15:13];
+            
+            110:
+              shiftconst[7:2] = 6x{num.q[15]};
+              shiftconst[1:0] = num.q[15:14];
+            
+            111:
+              shiftconst[7:1] = 7x{num.q[15]};
+              shiftconst[0] = num.q[15];
+            
+          }
+        
+          
+          if (alu.out != shiftconst) {
+            testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00100011;
+          errRes.d = alu.out;
+        } else if (num.q[19]==1) {
+              testState.d = testState.SRA;
+              rst=1;
+        }
+        
+      testState.CMPEQ:
+          if (!(alu.out & (num.q[15:8] == num.q[23:16]))) {
+              testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00110001;
+          errRes.d = alu.out;
+          } else if (num.q[24] == 1 & num.q[23:0] == 0) {
+              testState.d = testState.CMPLT;
+              rst=1;
+        }
+        
+      testState.CMPLT:
+          if (!(alu.out & (num.q[15:8] < num.q[23:16]))) {
+              testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00100101;
+          errRes.d = alu.out;
+          } else if (num.q[24] == 1 & num.q[23:0] == 0) {
+              testState.d = testState.CMPLE;
+              rst=1;
+        }
+        
+      testState.CMPLE:
+          if (!(alu.out & (num.q[15:8] <= num.q[23:16]))) {
+              testState.d = testState.ERROR;
+              errorA.d = num.q[15:8];
+              errorB.d = num.q[23:16];
+              errorFN.d = 8b00100111;
+          errRes.d = alu.out;
+          } else if (num.q[24] == 1 & num.q[23:0] == 0) {
+              testState.d = testState.DONE;
+              rst=1;
+        }
+        
+      testState.ERROR:
+          if (io_dip[2][7] == 0) {
+        errorA.d = 0;
+          errorB.d = 0;
+          errorFN.d = 0;
+        testState.d = testState.IDLE;
+              rst=1;
+        }
+        
+      testState.DONE:
+      if (io_dip[2][7] == 0) {
+        testState.d = testState.IDLE;
+          
+              rst=1;
+        }
+        
+        
+      
+  
+    }
+      
+    
+    
+    
+    if (testState.q != testState.IDLE) {
+      num.d = num.q + 1;
+    }
+    
+    if (testState.q == testState.ERROR) {
+      out = 0;
+      //error = 1;
+      out = errRes.q;
+    } else {
+      //error = 0;
+      out = alu.out;
+    }
+    
+    
+    //---------------------------------------------//
+    
+    
     // io_led[1] = alle.out;
     
-    conv.binaryInput = alle.out;
+    
+    conv.binaryInput = out;
+    if (io_dip[2][7] == 0) {
+    alu.a = io_dip[0];
+    alu.b = io_dip[1];
+    alu.alufn = io_dip[2];
+    conv.binaryInput = alu.out;
+    }
     seg.values = conv.decimalOutput;
+    
   }
 }

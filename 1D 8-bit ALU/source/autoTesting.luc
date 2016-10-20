@@ -2,25 +2,27 @@ module autoTesting (
     input clk,  // clock
     input rst,  // reset
     input start,
-    output out[8]
+    output out[8],
+    output error
   ) {
   
   sig resetter;
-  sig shiftconst;
+  sig shiftconst[8];
   alu8 alu;
-  fsm testState (.clk(clk)) = {IDLE, ADD, SUB, AND, OR, XOR, A, SHL, SHR, SRA, CMPEQ, CMPLT, CMPLE, ERROR};
-  dff num[17] (.clk(clk), .rst(resetter));
+  fsm testState (.clk(clk)) = {IDLE, ADD, SUB, AND, OR, XOR, A, SHL, SHR, SRA, CMPEQ, CMPLT, CMPLE, ERROR, DONE};
+  dff num[25] (.clk(clk), .rst(resetter));
 
   always {
   
-    alu.a = num.q[7:0];
-    alu.b = num.q[15:8];
+    alu.a = num.q[15:8];
+    alu.b = num.q[23:16];
     alu.alufn = 0;
+    shiftconst = 0;
     
     //setting output
     case (testState.q) {
       testState.IDLE:
-          out = 0;
+          out = 11111111;
         
       testState.ADD:
           alu.alufn = 000000;
@@ -57,18 +59,13 @@ module autoTesting (
         
       testState.CMPLE:
           alu.alufn = 110111;
-      
         
-        testState.ERROR:
-          if (num.q[16] == 1) {
-              out = 0;
-        } else {
-              out = 11111111;
-        }
+      testState.DONE:
+          out = 77;
   
     }
     
-    
+    //changing state
     case (testState.q) {
       testState.IDLE:
           if (start) {
@@ -77,92 +74,137 @@ module autoTesting (
         }
         
       testState.ADD:
-          if (alu.out != num.q[7:0] + num.q[15:8]) {
+          if (alu.out != num.q[15:8] + num.q[23:16]) {
               testState.d = testState.ERROR;
-          } else if (num.q == 10000000000000000) {
+          } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.SUB;
         }
         
       
       testState.SUB:
-          if (alu.out != num.q[7:0] - num.q[15:8]) {
+          if (alu.out != num.q[15:8] - num.q[23:16]) {
               testState.d = testState.ERROR;
-          } else if (num.q == 10000000000000000) {
+          } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.AND;
         }
         
       testState.AND:
-          if (alu.out != num.q[7:0] & num.q[15:8]) {
+          if (alu.out != num.q[15:8] & num.q[23:16]) {
               testState.d = testState.ERROR;
-          } else if (num.q == 10000000000000000) {
+          } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.OR;
         }
         
       testState.OR:
-          if (alu.out != num.q[7:0] | num.q[15:8]) {
+          if (alu.out != num.q[15:8] | num.q[23:16]) {
               testState.d = testState.ERROR;
-          } else if (num.q == 10000000000000000) {
+          } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.XOR;
         }
         
       testState.XOR:
-          if (alu.out != num.q[7:0] ^ num.q[15:8]) {
+          if (alu.out != num.q[15:8] ^ num.q[23:16]) {
               testState.d = testState.ERROR;
-          } else if (num.q == 10000000000000000) {
+          } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.A;
         }
         
       testState.A:
-          if (alu.out != num.q[7:0] ) {
+          if (alu.out != num.q[15:8] ) {
               testState.d = testState.ERROR;
-          } else if (num.q == 10000000000000000) {
+          } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.SHL;
         }
         
       testState.SHL:
 
-          if (alu.out != num.q[7:0]*(num.q[8] + 2*num.q[9] + 4*num.q[10])) {
+          if (alu.out != num.q[15:8]*(num.q[16] + 2*num.q[17] + 4*num.q[18])) {
             testState.d = testState.ERROR;
-        } else if (num.q == 10000000000000000) {
+        } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.SHR;
         }
         
         
       testState.SHR:
-          if (alu.out != num.q[7:0]/(num.q[8] + 2*num.q[9] + 4*num.q[10])) {
+          if (alu.out != num.q[15:8]/(num.q[16] + 2*num.q[17] + 4*num.q[18])) {
             testState.d = testState.ERROR;
-        } else if (num.q == 10000000000000000) {
+        } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.SRA;
         }
         
       testState.SRA:
-          alu.alufn = 100011;
+          case(num.q[16:14]) {
+            000:
+              shiftconst = num.q[15:8];
+            
+            001:
+              shiftconst[7] = num.q[15];
+              shiftconst[6:0] = num.q[15:9];
+            
+            010:
+              shiftconst[7:6] = 2x{num.q[15]};
+              shiftconst[5:0] = num.q[15:10];
+            
+            011:
+              shiftconst[7:5] = 3x{num.q[15]};
+              shiftconst[4:0] = num.q[15:11];
+            
+            100:
+              shiftconst[7:4] = 4x{num.q[15]};
+              shiftconst[3:0] = num.q[15:12];
+            
+            101:
+              shiftconst[7:3] = 5x{num.q[15]};
+              shiftconst[2:0] = num.q[15:13];
+            
+            110:
+              shiftconst[7:2] = 6x{num.q[15]};
+              shiftconst[1:0] = num.q[15:14];
+            
+            111:
+              shiftconst[7:1] = 7x{num.q[15]};
+              shiftconst[0] = num.q[15];
+            
+          }
+        
+          
+          if (alu.out != shiftconst) {
+            testState.d = testState.ERROR;
+        } else if (num.q == 1000000000000000000000000) {
+              testState.d = testState.SRA;
+        }
         
       testState.CMPEQ:
-          if (!(alu.out & (num.q[7:0] == num.q[15:8]))) {
+          if (!(alu.out & (num.q[15:8] == num.q[23:16]))) {
               testState.d = testState.ERROR;
-          } else if (num.q == 10000000000000000) {
+          } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.CMPLT;
         }
         
       testState.CMPLT:
-          if (!(alu.out & (num.q[7:0] < num.q[15:8]))) {
+          if (!(alu.out & (num.q[15:8] < num.q[23:16]))) {
               testState.d = testState.ERROR;
-          } else if (num.q == 10000000000000000) {
+          } else if (num.q == 1000000000000000000000000) {
               testState.d = testState.CMPLE;
         }
         
       testState.CMPLE:
-          if (!(alu.out & (num.q[7:0] <= num.q[15:8]))) {
+          if (!(alu.out & (num.q[15:8] <= num.q[23:16]))) {
               testState.d = testState.ERROR;
-          } else if (num.q == 10000000000000000) {
-              testState.d = testState.IDLE;
+          } else if (num.q == 1000000000000000000000000) {
+              testState.d = testState.DONE;
         }
         
       testState.ERROR:
           if (rst) {
         testState.d = testState.IDLE;
         }
+        
+      testState.DONE:
+      if (start == 0) {
+        testState.d = testState.IDLE;
+        }
+        
         
       
   
@@ -171,13 +213,15 @@ module autoTesting (
     
     
     
-    if (!testState.IDLE) {
+    if (testState.q != testState.IDLE) {
       num.d = num.q + 1;
     }
     
-    if (testState.ERROR) {
+    if (testState.q == testState.ERROR) {
       out = num.q;
+      error = 1;
     } else {
+      error = 0;
       out = alu.out;
     }
     

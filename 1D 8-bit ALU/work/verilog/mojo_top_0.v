@@ -46,15 +46,15 @@ module mojo_top_0 (
     .sel(M_seg_sel)
   );
   
-  wire [8-1:0] M_alle_out;
-  reg [8-1:0] M_alle_a;
-  reg [8-1:0] M_alle_b;
-  reg [8-1:0] M_alle_alufn;
-  alu8_3 alle (
-    .a(M_alle_a),
-    .b(M_alle_b),
-    .alufn(M_alle_alufn),
-    .out(M_alle_out)
+  wire [8-1:0] M_alu_out;
+  reg [8-1:0] M_alu_a;
+  reg [8-1:0] M_alu_b;
+  reg [8-1:0] M_alu_alufn;
+  alu8_3 alu (
+    .a(M_alu_a),
+    .b(M_alu_b),
+    .alufn(M_alu_alufn),
+    .out(M_alu_out)
   );
   
   wire [16-1:0] M_conv_decimalOutput;
@@ -64,9 +64,53 @@ module mojo_top_0 (
     .decimalOutput(M_conv_decimalOutput)
   );
   
+  reg [7:0] shiftconst;
+  
+  reg [7:0] out;
+  
+  
+  localparam IDLE_testState = 4'd0;
+  localparam ADD_testState = 4'd1;
+  localparam SUB_testState = 4'd2;
+  localparam AND_testState = 4'd3;
+  localparam OR_testState = 4'd4;
+  localparam XOR_testState = 4'd5;
+  localparam A_testState = 4'd6;
+  localparam SHL_testState = 4'd7;
+  localparam SHR_testState = 4'd8;
+  localparam SRA_testState = 4'd9;
+  localparam CMPEQ_testState = 4'd10;
+  localparam CMPLT_testState = 4'd11;
+  localparam CMPLE_testState = 4'd12;
+  localparam ERROR_testState = 4'd13;
+  localparam DONE_testState = 4'd14;
+  
+  reg [3:0] M_testState_d, M_testState_q = IDLE_testState;
+  
+  reg [24:0] M_num_d, M_num_q = 1'h0;
+  
+  reg [7:0] M_errorA_d, M_errorA_q = 1'h0;
+  
+  reg [7:0] M_errorB_d, M_errorB_q = 1'h0;
+  
+  reg [7:0] M_errorFN_d, M_errorFN_q = 1'h0;
+  
+  reg [7:0] M_errRes_d, M_errRes_q = 1'h0;
+  
   always @* begin
+    M_testState_d = M_testState_q;
+    M_num_d = M_num_q;
+    M_errRes_d = M_errRes_q;
+    M_errorA_d = M_errorA_q;
+    M_errorFN_d = M_errorFN_q;
+    M_errorB_d = M_errorB_q;
+    
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
+    M_errorA_d = M_errorA_q;
+    M_errorB_d = M_errorB_q;
+    M_errorFN_d = M_errorFN_q;
+    M_errRes_d = M_errRes_q;
     led = 8'h00;
     spi_miso = 1'bz;
     spi_channel = 4'bzzzz;
@@ -74,10 +118,420 @@ module mojo_top_0 (
     io_led = 24'h000000;
     io_seg = ~M_seg_seg;
     io_sel = ~M_seg_sel;
-    M_alle_a = io_dip[0+7-:8];
-    M_alle_b = io_dip[8+7-:8];
-    M_alle_alufn = io_dip[16+7-:8];
-    M_conv_binaryInput = M_alle_out;
+    M_alu_a = M_num_q[8+7-:8];
+    M_alu_b = M_num_q[16+7-:8];
+    M_alu_alufn = 1'h0;
+    shiftconst = 1'h0;
+    
+    case (M_testState_q)
+      IDLE_testState: begin
+        out = 1'h0;
+      end
+      ADD_testState: begin
+        M_alu_alufn = 8'h00;
+        io_led[0+0+0-:1] = 1'h1;
+      end
+      SUB_testState: begin
+        M_alu_alufn = 8'h01;
+        io_led[0+1+0-:1] = 1'h1;
+      end
+      AND_testState: begin
+        M_alu_alufn = 8'h18;
+        io_led[0+2+0-:1] = 1'h1;
+      end
+      OR_testState: begin
+        M_alu_alufn = 8'h1e;
+        io_led[0+3+0-:1] = 1'h1;
+      end
+      XOR_testState: begin
+        M_alu_alufn = 8'h16;
+        io_led[0+4+0-:1] = 1'h1;
+      end
+      A_testState: begin
+        M_alu_alufn = 8'h1a;
+        io_led[0+5+0-:1] = 1'h1;
+      end
+      SHL_testState: begin
+        M_alu_alufn = 8'h20;
+        io_led[0+6+0-:1] = 1'h1;
+      end
+      SHR_testState: begin
+        M_alu_alufn = 8'h21;
+        io_led[0+7+0-:1] = 1'h1;
+      end
+      SRA_testState: begin
+        M_alu_alufn = 8'h23;
+        io_led[0+0+1-:2] = 1'h1;
+      end
+      CMPEQ_testState: begin
+        M_alu_alufn = 8'h33;
+        io_led[0+0+2-:3] = 1'h1;
+      end
+      CMPLT_testState: begin
+        M_alu_alufn = 8'h35;
+        io_led[0+0+4-:5] = 1'h1;
+      end
+      CMPLE_testState: begin
+        M_alu_alufn = 8'h37;
+        io_led[0+0+6-:7] = 1'h1;
+      end
+      DONE_testState: begin
+        io_led[8+7-:8] = 8'hff;
+        out = 7'h4d;
+      end
+      ERROR_testState: begin
+        io_led[0+7-:8] = M_errorA_q;
+        io_led[8+7-:8] = M_errorB_q;
+        io_led[16+7-:8] = M_errorFN_q;
+      end
+    endcase
+    
+    case (M_testState_q)
+      IDLE_testState: begin
+        if (io_dip[16+7+0-:1]) begin
+          M_testState_d = ADD_testState;
+        end
+      end
+      ADD_testState: begin
+        if (M_alu_out != M_num_q[8+7-:8] + M_num_q[16+7-:8]) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h00;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
+            M_testState_d = SUB_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      SUB_testState: begin
+        if (M_alu_out != M_num_q[8+7-:8] - M_num_q[16+7-:8]) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h01;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
+            M_testState_d = AND_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      AND_testState: begin
+        if (M_alu_out != (M_num_q[8+7-:8] & M_num_q[16+7-:8])) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h18;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
+            M_testState_d = OR_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      OR_testState: begin
+        if (M_alu_out != (M_num_q[8+7-:8] | M_num_q[16+7-:8])) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h1e;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
+            M_testState_d = XOR_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      XOR_testState: begin
+        if (M_alu_out != (M_num_q[8+7-:8] ^ M_num_q[16+7-:8])) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h16;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
+            M_testState_d = A_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      A_testState: begin
+        if (M_alu_out != M_num_q[8+7-:8]) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h1a;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
+            M_testState_d = SHL_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      SHL_testState: begin
+        shiftconst = 8'h00;
+        
+        case (M_num_q[16+2-:3])
+          1'h0: begin
+            shiftconst = M_num_q[8+7-:8];
+          end
+          1'h1: begin
+            shiftconst[1+6-:7] = M_num_q[8+7-:8];
+          end
+          4'ha: begin
+            shiftconst[2+5-:6] = M_num_q[8+7-:8];
+          end
+          4'hb: begin
+            shiftconst[3+4-:5] = M_num_q[8+7-:8];
+          end
+          7'h64: begin
+            shiftconst[4+3-:4] = M_num_q[8+7-:8];
+          end
+          7'h65: begin
+            shiftconst[5+2-:3] = M_num_q[8+7-:8];
+          end
+          7'h6e: begin
+            shiftconst[6+1-:2] = M_num_q[8+7-:8];
+          end
+          7'h6f: begin
+            shiftconst[7+0-:1] = M_num_q[8+7-:8];
+          end
+        endcase
+        if (M_alu_out != shiftconst) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h20;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[19+0-:1] == 1'h1) begin
+            M_testState_d = SHR_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      SHR_testState: begin
+        shiftconst = 8'h00;
+        
+        case (M_num_q[16+2-:3])
+          1'h0: begin
+            shiftconst = M_num_q[8+7-:8];
+          end
+          1'h1: begin
+            shiftconst[0+6-:7] = M_num_q[9+6-:7];
+          end
+          4'ha: begin
+            shiftconst[0+5-:6] = M_num_q[10+5-:6];
+          end
+          4'hb: begin
+            shiftconst[0+4-:5] = M_num_q[11+4-:5];
+          end
+          7'h64: begin
+            shiftconst[0+3-:4] = M_num_q[12+3-:4];
+          end
+          7'h65: begin
+            shiftconst[0+2-:3] = M_num_q[13+2-:3];
+          end
+          7'h6e: begin
+            shiftconst[0+1-:2] = M_num_q[14+1-:2];
+          end
+          7'h6f: begin
+            shiftconst[0+0-:1] = M_num_q[15+0-:1];
+          end
+        endcase
+        if (M_alu_out != shiftconst) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h21;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[19+0-:1] == 1'h1) begin
+            M_testState_d = SRA_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      SRA_testState: begin
+        
+        case (M_num_q[16+2-:3])
+          1'h0: begin
+            shiftconst = M_num_q[8+7-:8];
+          end
+          1'h1: begin
+            shiftconst[7+0-:1] = M_num_q[15+0-:1];
+            shiftconst[0+6-:7] = M_num_q[9+6-:7];
+          end
+          4'ha: begin
+            shiftconst[6+1-:2] = {2'h2{M_num_q[15+0-:1]}};
+            shiftconst[0+5-:6] = M_num_q[10+5-:6];
+          end
+          4'hb: begin
+            shiftconst[5+2-:3] = {2'h3{M_num_q[15+0-:1]}};
+            shiftconst[0+4-:5] = M_num_q[11+4-:5];
+          end
+          7'h64: begin
+            shiftconst[4+3-:4] = {3'h4{M_num_q[15+0-:1]}};
+            shiftconst[0+3-:4] = M_num_q[12+3-:4];
+          end
+          7'h65: begin
+            shiftconst[3+4-:5] = {3'h5{M_num_q[15+0-:1]}};
+            shiftconst[0+2-:3] = M_num_q[13+2-:3];
+          end
+          7'h6e: begin
+            shiftconst[2+5-:6] = {3'h6{M_num_q[15+0-:1]}};
+            shiftconst[0+1-:2] = M_num_q[14+1-:2];
+          end
+          7'h6f: begin
+            shiftconst[1+6-:7] = {3'h7{M_num_q[15+0-:1]}};
+            shiftconst[0+0-:1] = M_num_q[15+0-:1];
+          end
+        endcase
+        if (M_alu_out != shiftconst) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h23;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[19+0-:1] == 1'h1) begin
+            M_testState_d = SRA_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      CMPEQ_testState: begin
+        if (!(M_alu_out & (M_num_q[8+7-:8] == M_num_q[16+7-:8]))) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h31;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
+            M_testState_d = CMPLT_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      CMPLT_testState: begin
+        if (!(M_alu_out & (M_num_q[8+7-:8] < M_num_q[16+7-:8]))) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h25;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
+            M_testState_d = CMPLE_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      CMPLE_testState: begin
+        if (!(M_alu_out & (M_num_q[8+7-:8] <= M_num_q[16+7-:8]))) begin
+          M_testState_d = ERROR_testState;
+          M_errorA_d = M_num_q[8+7-:8];
+          M_errorB_d = M_num_q[16+7-:8];
+          M_errorFN_d = 8'h27;
+          M_errRes_d = M_alu_out;
+        end else begin
+          if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
+            M_testState_d = DONE_testState;
+            rst = 1'h1;
+          end
+        end
+      end
+      ERROR_testState: begin
+        if (io_dip[16+7+0-:1] == 1'h0) begin
+          M_errorA_d = 1'h0;
+          M_errorB_d = 1'h0;
+          M_errorFN_d = 1'h0;
+          M_testState_d = IDLE_testState;
+          rst = 1'h1;
+        end
+      end
+      DONE_testState: begin
+        if (io_dip[16+7+0-:1] == 1'h0) begin
+          M_testState_d = IDLE_testState;
+          rst = 1'h1;
+        end
+      end
+    endcase
+    if (M_testState_q != IDLE_testState) begin
+      M_num_d = M_num_q + 1'h1;
+    end
+    if (M_testState_q == ERROR_testState) begin
+      out = 1'h0;
+      out = M_errRes_q;
+    end else begin
+      out = M_alu_out;
+    end
+    M_conv_binaryInput = out;
+    if (io_dip[16+7+0-:1] == 1'h0) begin
+      M_alu_a = io_dip[0+7-:8];
+      M_alu_b = io_dip[8+7-:8];
+      M_alu_alufn = io_dip[16+7-:8];
+      M_conv_binaryInput = M_alu_out;
+    end
     M_seg_values = M_conv_decimalOutput;
   end
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_num_q <= 1'h0;
+    end else begin
+      M_num_q <= M_num_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    M_testState_q <= M_testState_d;
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_errRes_q <= 1'h0;
+    end else begin
+      M_errRes_q <= M_errRes_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_errorB_q <= 1'h0;
+    end else begin
+      M_errorB_q <= M_errorB_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_errorFN_q <= 1'h0;
+    end else begin
+      M_errorFN_q <= M_errorFN_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_errorA_q <= 1'h0;
+    end else begin
+      M_errorA_q <= M_errorA_d;
+    end
+  end
+  
 endmodule
