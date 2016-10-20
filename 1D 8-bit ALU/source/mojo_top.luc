@@ -37,6 +37,7 @@ module mojo_top (
   
   mojo_8bitfulladder adddr;
   compare8 cpr;
+  converter conv;
   
   always {
 
@@ -51,10 +52,14 @@ module mojo_top (
     
     io_led = 3x{{8h00}};    // turn LEDs off
     
-    seg.values = {4h8,4h5,4h3,4h1}; //feed values to display into the driver
+    //seg.values = {4h8,4h5,4h3,4h1}; //feed values to display into the driver
     
     io_seg = ~seg.seg; // connect segments to the driver
     io_sel = ~seg.sel; // first digit only
+    
+    //alu.a = io_dip[0];
+    //alu.b = io_dip[1];
+    //alu.alufn = io_dip[2];
     
     adddr.a = io_dip[0];
     adddr.b = io_dip[1];
@@ -65,6 +70,15 @@ module mojo_top (
     cpr.alufn = io_dip[2][2:1];
     io_led[1] = adddr.sum;
     io_led[2] = cpr.out;
+    
+    conv.binaryInput = adddr.sum;
+    //conv.binaryInput = alu.out;
+    
+    seg.values = conv.decimalOutput;
+    
+    
+    
+    
     
     
 

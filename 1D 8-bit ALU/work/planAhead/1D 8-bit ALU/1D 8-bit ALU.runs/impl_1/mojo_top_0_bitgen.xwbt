@@ -1,8 +1,8 @@
 INTSTYLE=pa
-INFILE=D:\Uni\Year 2 Sophomore Term\50.002 Computational Structure\1D Project\1D 8-bit ALU\work\planAhead\1D 8-bit ALU\1D 8-bit ALU.runs\impl_1\mojo_top_0_routed.ncd
-OUTFILE=D:\Uni\Year 2 Sophomore Term\50.002 Computational Structure\1D Project\1D 8-bit ALU\work\planAhead\1D 8-bit ALU\1D 8-bit ALU.runs\impl_1\mojo_top_0.bit
+INFILE=D:\Uni\Year 2 Sophomore Term\50.002 Computational Structure\1D-Project-compstruct-incomplete-sevensegment\1D-Project-compstruct-incomplete-sevensegment\1D 8-bit ALU\work\planAhead\1D 8-bit ALU\1D 8-bit ALU.runs\impl_1\mojo_top_0_routed.ncd
+OUTFILE=D:\Uni\Year 2 Sophomore Term\50.002 Computational Structure\1D-Project-compstruct-incomplete-sevensegment\1D-Project-compstruct-incomplete-sevensegment\1D 8-bit ALU\work\planAhead\1D 8-bit ALU\1D 8-bit ALU.runs\impl_1\mojo_top_0.bit
 FAMILY=Spartan6
 PART=xc6slx9-2tqg144
-WORKINGDIR=D:\Uni\Year 2 Sophomore Term\50.002 Computational Structure\1D Project\1D 8-bit ALU\work\planAhead\1D 8-bit ALU\1D 8-bit ALU.runs\impl_1
+WORKINGDIR=D:\Uni\Year 2 Sophomore Term\50.002 Computational Structure\1D-Project-compstruct-incomplete-sevensegment\1D-Project-compstruct-incomplete-sevensegment\1D 8-bit ALU\work\planAhead\1D 8-bit ALU\1D 8-bit ALU.runs\impl_1
 LICENSE=WebPack
 USER_INFO=__0_0_0

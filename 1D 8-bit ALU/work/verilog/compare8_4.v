@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module compare8_3 (
+module compare8_4 (
     input z,
     input v,
     input n,
@@ -17,7 +17,7 @@ module compare8_3 (
   wire [1-1:0] M_muxx_out;
   reg [4-1:0] M_muxx_a;
   reg [2-1:0] M_muxx_sel;
-  multiplexer4_12 muxx (
+  multiplexer4_17 muxx (
     .a(M_muxx_a),
     .sel(M_muxx_sel),
     .out(M_muxx_out)

@@ -2,19 +2,46 @@
 <DARoots Version="1" Minor="26">
   <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/imports/verilog/multiplexer_12.v">
+    <File Path="$PSRCDIR/sources_1/imports/verilog/seven_seg_7.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/multiplexer_12.v"/>
-        <Attr Name="ImportTime" Val="1476810748"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/seven_seg_7.v"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/verilog/mojo_fullAdder_4.v">
+    <File Path="$PSRCDIR/sources_1/imports/verilog/multiplexer_17.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/mojo_fullAdder_4.v"/>
-        <Attr Name="ImportTime" Val="1476810748"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/multiplexer_17.v"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+        <Attr Name="UsedInSimulation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/verilog/mojo_fullAdder_9.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/mojo_fullAdder_9.v"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+        <Attr Name="UsedInSimulation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/verilog/decoder_8.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/decoder_8.v"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+        <Attr Name="UsedInSimulation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/verilog/counter_6.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/counter_6.v"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
@@ -23,25 +50,43 @@
     <File Path="$PSRCDIR/sources_1/imports/verilog/reset_conditioner_1.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/reset_conditioner_1.v"/>
-        <Attr Name="ImportTime" Val="1476810748"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/verilog/compare8_3.v">
+    <File Path="$PSRCDIR/sources_1/imports/verilog/multi_seven_seg_2.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/compare8_3.v"/>
-        <Attr Name="ImportTime" Val="1476810748"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/multi_seven_seg_2.v"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/verilog/8bit_fulladder_2.v">
+    <File Path="$PSRCDIR/sources_1/imports/verilog/converter_5.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/8bit_fulladder_2.v"/>
-        <Attr Name="ImportTime" Val="1476810748"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/converter_5.v"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+        <Attr Name="UsedInSimulation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/verilog/compare8_4.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/compare8_4.v"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+        <Attr Name="UsedInSimulation" Val="1"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/verilog/8bit_fulladder_3.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/8bit_fulladder_3.v"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>
@@ -50,7 +95,7 @@
     <File Path="$PSRCDIR/sources_1/imports/verilog/mojo_top_0.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../verilog/mojo_top_0.v"/>
-        <Attr Name="ImportTime" Val="1476810748"/>
+        <Attr Name="ImportTime" Val="1476946141"/>
         <Attr Name="UsedInSynthesis" Val="1"/>
         <Attr Name="UsedInImplementation" Val="1"/>
         <Attr Name="UsedInSimulation" Val="1"/>

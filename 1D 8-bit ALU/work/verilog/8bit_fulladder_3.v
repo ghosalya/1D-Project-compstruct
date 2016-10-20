@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module mojo_8bitfulladder_2 (
+module mojo_8bitfulladder_3 (
     input [7:0] a,
     input [7:0] b,
     input alufn0,
@@ -19,7 +19,7 @@ module mojo_8bitfulladder_2 (
   wire [1-1:0] M_adder0_sum;
   wire [1-1:0] M_adder0_carry;
   reg [3-1:0] M_adder0_a;
-  mojo_fullAdder_4 adder0 (
+  mojo_fullAdder_9 adder0 (
     .a(M_adder0_a),
     .sum(M_adder0_sum),
     .carry(M_adder0_carry)
@@ -28,7 +28,7 @@ module mojo_8bitfulladder_2 (
   wire [1-1:0] M_adder1_sum;
   wire [1-1:0] M_adder1_carry;
   reg [3-1:0] M_adder1_a;
-  mojo_fullAdder_4 adder1 (
+  mojo_fullAdder_9 adder1 (
     .a(M_adder1_a),
     .sum(M_adder1_sum),
     .carry(M_adder1_carry)
@@ -37,7 +37,7 @@ module mojo_8bitfulladder_2 (
   wire [1-1:0] M_adder2_sum;
   wire [1-1:0] M_adder2_carry;
   reg [3-1:0] M_adder2_a;
-  mojo_fullAdder_4 adder2 (
+  mojo_fullAdder_9 adder2 (
     .a(M_adder2_a),
     .sum(M_adder2_sum),
     .carry(M_adder2_carry)
@@ -46,7 +46,7 @@ module mojo_8bitfulladder_2 (
   wire [1-1:0] M_adder3_sum;
   wire [1-1:0] M_adder3_carry;
   reg [3-1:0] M_adder3_a;
-  mojo_fullAdder_4 adder3 (
+  mojo_fullAdder_9 adder3 (
     .a(M_adder3_a),
     .sum(M_adder3_sum),
     .carry(M_adder3_carry)
@@ -55,7 +55,7 @@ module mojo_8bitfulladder_2 (
   wire [1-1:0] M_adder4_sum;
   wire [1-1:0] M_adder4_carry;
   reg [3-1:0] M_adder4_a;
-  mojo_fullAdder_4 adder4 (
+  mojo_fullAdder_9 adder4 (
     .a(M_adder4_a),
     .sum(M_adder4_sum),
     .carry(M_adder4_carry)
@@ -64,7 +64,7 @@ module mojo_8bitfulladder_2 (
   wire [1-1:0] M_adder5_sum;
   wire [1-1:0] M_adder5_carry;
   reg [3-1:0] M_adder5_a;
-  mojo_fullAdder_4 adder5 (
+  mojo_fullAdder_9 adder5 (
     .a(M_adder5_a),
     .sum(M_adder5_sum),
     .carry(M_adder5_carry)
@@ -73,7 +73,7 @@ module mojo_8bitfulladder_2 (
   wire [1-1:0] M_adder6_sum;
   wire [1-1:0] M_adder6_carry;
   reg [3-1:0] M_adder6_a;
-  mojo_fullAdder_4 adder6 (
+  mojo_fullAdder_9 adder6 (
     .a(M_adder6_a),
     .sum(M_adder6_sum),
     .carry(M_adder6_carry)
@@ -82,7 +82,7 @@ module mojo_8bitfulladder_2 (
   wire [1-1:0] M_adder7_sum;
   wire [1-1:0] M_adder7_carry;
   reg [3-1:0] M_adder7_a;
-  mojo_fullAdder_4 adder7 (
+  mojo_fullAdder_9 adder7 (
     .a(M_adder7_a),
     .sum(M_adder7_sum),
     .carry(M_adder7_carry)

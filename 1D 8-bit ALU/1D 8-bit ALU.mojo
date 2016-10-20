@@ -7,6 +7,7 @@
     <src>boole1.luc</src>
     <src>compare8.luc</src>
     <src>seven_seg.luc</src>
+    <src>converter.luc</src>
     <src>boole8.luc</src>
     <src>multi_seven_seg.luc</src>
     <src top="true">mojo_top.luc</src>
