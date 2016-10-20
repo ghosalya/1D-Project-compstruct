@@ -1,0 +1,57 @@
+module converter (
+    input binaryInput[8], //takes 1 8-bit number
+    output decimalOutput[4][4]
+  ) {
+  
+  var i;
+  var j;
+  var currentDigit;
+  var multiplier;
+  var binarySum;
+  var hundreds;
+  var tens;
+  var ones;
+  
+  always {
+    // binary to decimal conversion
+    binarySum = 0;
+    for (i=0;i<8;i++){
+      currentDigit = binaryInput[i];
+      multiplier = 1;
+      for (j=0;j<i;j++){
+        multiplier = multiplier*2;
+      }
+      
+      if (i==7){
+        binarySum = binarySum - multiplier*currentDigit;
+      } else {
+        binarySum = binarySum + multiplier*currentDigit;
+      }
+    }
+   
+    // decimal number to separate digits conversion
+    if (binarySum<0){
+      binarySum = binarySum*(-1);
+    }
+    
+    if (binarySum>99){
+      hundreds = binarySum/100;
+      binarySum = binarySum - hundreds*100;
+    } else {
+      hundreds = 0;
+    }
+    
+    if (binarySum>9){
+      tens = binarySum/10;
+      binarySum = binarySum - tens*10;
+    } else {
+      tens = 0;
+    }
+    
+    ones = binarySum;
+    decimalOutput[0] = ones;
+    decimalOutput[1] = tens;
+    decimalOutput[2] = hundreds;
+    decimalOutput[3] = binaryInput[7]*10;
+  }
+}

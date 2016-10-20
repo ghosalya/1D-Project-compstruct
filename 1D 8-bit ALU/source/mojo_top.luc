@@ -36,6 +36,7 @@ module mojo_top (
   } 
   
   alu8 alle;
+  converter conv;
   
   always {
 
@@ -50,18 +51,15 @@ module mojo_top (
     
     io_led = 3x{{8h00}};    // turn LEDs off
     
-    seg.values = {4h8,4h5,4h3,4h1}; //feed values to display into the driver
-    
     io_seg = ~seg.seg; // connect segments to the driver
     io_sel = ~seg.sel; // first digit only
     
     alle.a = io_dip[0];
     alle.b = io_dip[1];
     alle.alufn = io_dip[2];
-    io_led[1] = alle.out;
+    // io_led[1] = alle.out;
     
-    
-
-    
+    conv.binaryInput = alle.out;
+    seg.values = conv.decimalOutput;
   }
 }
