@@ -84,25 +84,6 @@ Elaborating module <converter_4>.
 WARNING:HDLCompiler:413 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/converter_4.v" Line 66: Result of 32-bit expression is truncated to fit in 4-bit target.
 WARNING:HDLCompiler:413 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/converter_4.v" Line 67: Result of 32-bit expression is truncated to fit in 4-bit target.
 WARNING:HDLCompiler:413 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/converter_4.v" Line 68: Result of 32-bit expression is truncated to fit in 4-bit target.
-WARNING:HDLCompiler:413 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 287: Result of 8-bit expression is truncated to fit in 7-bit target.
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 289: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 292: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 295: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 298: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 301: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 304: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 331: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 334: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 337: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 340: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 343: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 346: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 373: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 377: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 381: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 385: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 389: case condition never applies
-WARNING:HDLCompiler:295 - "D:/Uni/Year 2 Sophomore Term/50.002 Computational Structure/1D Project/1D 8-bit ALU/work/planAhead/1D 8-bit ALU/1D 8-bit ALU.srcs/sources_1/imports/verilog/mojo_top_0.v" Line 393: case condition never applies
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -117,19 +98,16 @@ WARNING:Xst:647 - Input <spi_mosi> is never used. This port will be preserved an
 WARNING:Xst:647 - Input <spi_sck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_tx> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 4-bit register for signal <M_testState_q>.
-    Found 8-bit register for signal <M_errRes_q>.
     Found 8-bit register for signal <M_errorB_q>.
-    Found 8-bit register for signal <M_errorFN_q>.
-    Found 8-bit register for signal <M_errorA_q>.
     Found 25-bit register for signal <M_num_q>.
-INFO:Xst:1799 - State 1011 is never reached in FSM <M_testState_q>.
-INFO:Xst:1799 - State 1100 is never reached in FSM <M_testState_q>.
-INFO:Xst:1799 - State 1110 is never reached in FSM <M_testState_q>.
+    Found 4-bit register for signal <M_testState_q>.
+    Found 8-bit register for signal <M_errorFN_q>.
+    Found 8-bit register for signal <M_errRes_q>.
+    Found 8-bit register for signal <M_errorA_q>.
     Found finite state machine <FSM_0> for signal <M_testState_q>.
     -----------------------------------------------------------------------
-    | States             | 14                                             |
-    | Transitions        | 36                                             |
+    | States             | 15                                             |
+    | Transitions        | 51                                             |
     | Inputs             | 16                                             |
     | Outputs            | 18                                             |
     | Clock              | clk (rising_edge)                              |
@@ -137,33 +115,43 @@ INFO:Xst:1799 - State 1110 is never reached in FSM <M_testState_q>.
     | Encoding           | auto                                           |
     | Implementation     | LUT                                            |
     -----------------------------------------------------------------------
-    Found 8-bit subtractor for signal <M_num_q[15]_M_num_q[23]_sub_16_OUT> created at line 210.
-    Found 8-bit adder for signal <M_num_q[15]_M_num_q[23]_add_5_OUT> created at line 196.
-    Found 25-bit adder for signal <M_num_q[24]_GND_1_o_add_148_OUT> created at line 470.
-    Found 1-bit 16-to-1 multiplexer for signal <rst> created at line 189.
-    Found 1-bit tristate buffer for signal <spi_miso> created at line 100
-    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 100
-    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 100
-    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 100
-    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 100
-    Found 1-bit tristate buffer for signal <avr_rx> created at line 100
-    Found 8-bit comparator equal for signal <n0007> created at line 196
-    Found 8-bit comparator equal for signal <n0017> created at line 210
-    Found 8-bit comparator equal for signal <n0027> created at line 224
-    Found 8-bit comparator equal for signal <n0037> created at line 238
-    Found 8-bit comparator equal for signal <n0047> created at line 252
-    Found 8-bit comparator equal for signal <n0056> created at line 266
-    Found 8-bit comparator equal for signal <n0066> created at line 308
-    Found 8-bit comparator equal for signal <n0076> created at line 350
-    Found 8-bit comparator equal for signal <n0089> created at line 398
-    Found 8-bit comparator equal for signal <M_num_q[15]_M_num_q[23]_equal_101_o> created at line 412
-    Found 8-bit comparator greater for signal <M_num_q[15]_M_num_q[23]_LessThan_112_o> created at line 426
-    Found 8-bit comparator lessequal for signal <n0122> created at line 440
+    Found 8-bit subtractor for signal <M_num_q[15]_M_num_q[23]_sub_16_OUT> created at line 214.
+    Found 8-bit adder for signal <M_num_q[15]_M_num_q[23]_add_5_OUT> created at line 200.
+    Found 25-bit adder for signal <M_num_q[24]_GND_1_o_add_149_OUT> created at line 490.
+    Found 8-bit 8-to-1 multiplexer for signal <M_num_q[18]_M_num_q[8]_wide_mux_64_OUT> created at line 285.
+    Found 8-bit 8-to-1 multiplexer for signal <M_num_q[18]_GND_1_o_wide_mux_73_OUT> created at line 334.
+    Found 1-bit 5-to-1 multiplexer for signal <M_num_q[18]_M_num_q[15]_Mux_85_o> created at line 375.
+    Found 1-bit 7-to-1 multiplexer for signal <M_num_q[18]_M_num_q[15]_Mux_86_o> created at line 375.
+    Found 1-bit 7-to-1 multiplexer for signal <M_num_q[18]_M_num_q[15]_Mux_87_o> created at line 375.
+    Found 1-bit 8-to-1 multiplexer for signal <M_num_q[18]_M_num_q[15]_Mux_88_o> created at line 375.
+    Found 1-bit 16-to-1 multiplexer for signal <rst> created at line 193.
+    Found 1-bit tristate buffer for signal <spi_miso> created at line 104
+    Found 1-bit tristate buffer for signal <spi_channel<3>> created at line 104
+    Found 1-bit tristate buffer for signal <spi_channel<2>> created at line 104
+    Found 1-bit tristate buffer for signal <spi_channel<1>> created at line 104
+    Found 1-bit tristate buffer for signal <spi_channel<0>> created at line 104
+    Found 1-bit tristate buffer for signal <avr_rx> created at line 104
+    Found 8-bit comparator equal for signal <n0007> created at line 200
+    Found 8-bit comparator equal for signal <n0017> created at line 214
+    Found 8-bit comparator equal for signal <n0027> created at line 228
+    Found 8-bit comparator equal for signal <n0037> created at line 242
+    Found 8-bit comparator equal for signal <n0047> created at line 256
+    Found 8-bit comparator equal for signal <n0056> created at line 270
+    Found 8-bit comparator equal for signal <n0066> created at line 318
+    Found 8-bit comparator equal for signal <n0076> created at line 360
+    Found 8-bit comparator equal for signal <n0092> created at line 408
+    Found 8-bit comparator equal for signal <M_num_q[15]_M_num_q[23]_equal_98_o> created at line 422
+    Found 1-bit comparator equal for signal <M_alu_out[0]_M_num_q[15]_equal_99_o> created at line 422
+    Found 1-bit comparator greater for signal <M_num_q[23]_M_num_q[15]_LessThan_112_o> created at line 446
+    Found 7-bit comparator greater for signal <M_num_q[15]_M_num_q[15]_LessThan_115_o> created at line 446
+    Found 1-bit comparator equal for signal <M_alu_out[0]_M_num_q[23]_equal_116_o> created at line 446
+    Found 8-bit comparator lessequal for signal <n0127> created at line 460
+    Found 1-bit comparator equal for signal <M_alu_out[0]_M_num_q[15]_equal_126_o> created at line 460
     Summary:
 	inferred   3 Adder/Subtractor(s).
 	inferred  57 D-type flip-flop(s).
-	inferred  12 Comparator(s).
-	inferred  27 Multiplexer(s).
+	inferred  16 Comparator(s).
+	inferred  41 Multiplexer(s).
 	inferred   6 Tristate(s).
 	inferred   1 Finite State Machine(s).
 Unit <mojo_top_0> synthesized.
@@ -476,7 +464,9 @@ Macro Statistics
  25-bit register                                       : 1
  4-bit register                                        : 1
  8-bit register                                        : 1
-# Comparators                                          : 80
+# Comparators                                          : 84
+ 1-bit comparator equal                                : 3
+ 1-bit comparator greater                              : 1
  32-bit comparator greater                             : 2
  32-bit comparator lessequal                           : 55
  33-bit comparator lessequal                           : 2
@@ -486,15 +476,19 @@ Macro Statistics
  37-bit comparator lessequal                           : 1
  38-bit comparator lessequal                           : 1
  39-bit comparator lessequal                           : 1
+ 7-bit comparator greater                              : 1
  8-bit comparator equal                                : 10
- 8-bit comparator greater                              : 1
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 1900
+# Multiplexers                                         : 1914
  1-bit 16-to-1 multiplexer                             : 1
- 1-bit 2-to-1 multiplexer                              : 1871
+ 1-bit 2-to-1 multiplexer                              : 1879
+ 1-bit 5-to-1 multiplexer                              : 1
+ 1-bit 7-to-1 multiplexer                              : 2
+ 1-bit 8-to-1 multiplexer                              : 1
  18-bit 2-to-1 multiplexer                             : 1
  32-bit 2-to-1 multiplexer                             : 10
  8-bit 2-to-1 multiplexer                              : 17
+ 8-bit 8-to-1 multiplexer                              : 2
 # Logic shifters                                       : 11
  31-bit shifter logical right                          : 1
  63-bit shifter logical right                          : 1
@@ -502,8 +496,9 @@ Macro Statistics
 # Tristates                                            : 6
  1-bit tristate buffer                                 : 6
 # FSMs                                                 : 1
-# Xors                                                 : 26
+# Xors                                                 : 28
  1-bit xor2                                            : 25
+ 7-bit xor2                                            : 2
  8-bit xor2                                            : 1
 
 =========================================================================
@@ -564,7 +559,9 @@ Macro Statistics
  25-bit up counter                                     : 1
 # Registers                                            : 36
  Flip-Flops                                            : 36
-# Comparators                                          : 80
+# Comparators                                          : 84
+ 1-bit comparator equal                                : 3
+ 1-bit comparator greater                              : 1
  32-bit comparator greater                             : 2
  32-bit comparator lessequal                           : 55
  33-bit comparator lessequal                           : 2
@@ -574,21 +571,26 @@ Macro Statistics
  37-bit comparator lessequal                           : 1
  38-bit comparator lessequal                           : 1
  39-bit comparator lessequal                           : 1
+ 7-bit comparator greater                              : 1
  8-bit comparator equal                                : 10
- 8-bit comparator greater                              : 1
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 1899
+# Multiplexers                                         : 1913
  1-bit 16-to-1 multiplexer                             : 1
- 1-bit 2-to-1 multiplexer                              : 1871
+ 1-bit 2-to-1 multiplexer                              : 1879
+ 1-bit 5-to-1 multiplexer                              : 1
+ 1-bit 7-to-1 multiplexer                              : 2
+ 1-bit 8-to-1 multiplexer                              : 1
  32-bit 2-to-1 multiplexer                             : 10
  8-bit 2-to-1 multiplexer                              : 17
+ 8-bit 8-to-1 multiplexer                              : 2
 # Logic shifters                                       : 11
  31-bit shifter logical right                          : 1
  63-bit shifter logical right                          : 1
  7-bit shifter logical right                           : 9
 # FSMs                                                 : 1
-# Xors                                                 : 26
+# Xors                                                 : 28
  1-bit xor2                                            : 25
+ 7-bit xor2                                            : 2
  8-bit xor2                                            : 1
 
 =========================================================================
@@ -599,25 +601,26 @@ Macro Statistics
 WARNING:Xst:1293 - FF/Latch <M_errorFN_q_6> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <M_errorFN_q_7> has a constant value of 0 in block <mojo_top_0>. This FF/Latch will be trimmed during the optimization process.
 Analyzing FSM <MFsm> for best encoding.
-Optimizing FSM <FSM_0> on signal <M_testState_q[1:11]> with one-hot encoding.
-----------------------
+Optimizing FSM <FSM_0> on signal <M_testState_q[1:15]> with one-hot encoding.
+--------------------------
  State | Encoding
-----------------------
- 0000  | 00000000001
- 0001  | 00000000010
- 0010  | 00000000100
- 1101  | 00000001000
- 0011  | 00000010000
- 0100  | 00000100000
- 0101  | 00001000000
- 0110  | 00010000000
- 0111  | 00100000000
- 1000  | 01000000000
- 1001  | 10000000000
- 1011  | unreached
- 1100  | unreached
- 1110  | unreached
-----------------------
+--------------------------
+ 0000  | 000000000000001
+ 0001  | 000000000000010
+ 0010  | 000000000000100
+ 1101  | 000000000001000
+ 0011  | 000000000010000
+ 0100  | 000000000100000
+ 0101  | 000000001000000
+ 0110  | 000000010000000
+ 0111  | 000000100000000
+ 1000  | 000001000000000
+ 1001  | 000010000000000
+ 1010  | 000100000000000
+ 1011  | 001000000000000
+ 1100  | 010000000000000
+ 1110  | 100000000000000
+--------------------------
 
 Optimizing unit <mojo_top_0> ...
 
@@ -631,11 +634,9 @@ Optimizing unit <div_32u_4u> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 50.
-FlipFlop M_num_q_17 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 52.
 FlipFlop M_num_q_18 has been replicated 1 time(s)
-FlipFlop M_testState_q_FSM_FFd1 has been replicated 1 time(s)
-FlipFlop M_testState_q_FSM_FFd4 has been replicated 1 time(s)
+FlipFlop M_num_q_19 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -647,8 +648,8 @@ Unit <mojo_top_0> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 92
- Flip-Flops                                            : 92
+# Registers                                            : 94
+ Flip-Flops                                            : 94
 
 =========================================================================
 
@@ -672,7 +673,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 92    |
+clk                                | BUFGP                  | 94    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -683,9 +684,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 13.608ns (Maximum Frequency: 73.486MHz)
-   Minimum input arrival time before clock: 15.591ns
-   Maximum output required time after clock: 259.369ns
-   Maximum combinational path delay: 261.377ns
+   Minimum period: 13.708ns (Maximum Frequency: 72.950MHz)
+   Minimum input arrival time before clock: 15.194ns
+   Maximum output required time after clock: 260.226ns
+   Maximum combinational path delay: 261.713ns
 
 =========================================================================

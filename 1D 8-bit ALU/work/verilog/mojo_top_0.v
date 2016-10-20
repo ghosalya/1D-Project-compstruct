@@ -68,6 +68,10 @@ module mojo_top_0 (
   
   reg [7:0] out;
   
+  reg [7:0] comA;
+  
+  reg [7:0] comB;
+  
   
   localparam IDLE_testState = 4'd0;
   localparam ADD_testState = 4'd1;
@@ -277,32 +281,38 @@ module mojo_top_0 (
         end
       end
       SHL_testState: begin
-        shiftconst = 8'h00;
         
         case (M_num_q[16+2-:3])
-          1'h0: begin
+          3'h0: begin
             shiftconst = M_num_q[8+7-:8];
           end
-          1'h1: begin
-            shiftconst[1+6-:7] = M_num_q[8+7-:8];
+          3'h1: begin
+            shiftconst[1+6-:7] = M_num_q[8+6-:7];
+            shiftconst[0+0-:1] = 1'h0;
           end
-          4'ha: begin
-            shiftconst[2+5-:6] = M_num_q[8+7-:8];
+          3'h2: begin
+            shiftconst[2+5-:6] = M_num_q[8+5-:6];
+            shiftconst[0+1-:2] = 2'h0;
           end
-          4'hb: begin
-            shiftconst[3+4-:5] = M_num_q[8+7-:8];
+          3'h3: begin
+            shiftconst[3+4-:5] = M_num_q[8+4-:5];
+            shiftconst[0+2-:3] = 3'h0;
           end
-          7'h64: begin
-            shiftconst[4+3-:4] = M_num_q[8+7-:8];
+          3'h4: begin
+            shiftconst[4+3-:4] = M_num_q[8+3-:4];
+            shiftconst[0+3-:4] = 4'h0;
           end
-          7'h65: begin
-            shiftconst[5+2-:3] = M_num_q[8+7-:8];
+          3'h5: begin
+            shiftconst[5+2-:3] = M_num_q[8+2-:3];
+            shiftconst[0+4-:5] = 5'h00;
           end
-          7'h6e: begin
-            shiftconst[6+1-:2] = M_num_q[8+7-:8];
+          3'h6: begin
+            shiftconst[6+1-:2] = M_num_q[8+1-:2];
+            shiftconst[0+5-:6] = 6'h00;
           end
-          7'h6f: begin
-            shiftconst[7+0-:1] = M_num_q[8+7-:8];
+          3'h7: begin
+            shiftconst[7+0-:1] = M_num_q[8+0-:1];
+            shiftconst[0+6-:7] = 7'h00;
           end
         endcase
         if (M_alu_out != shiftconst) begin
@@ -322,28 +332,28 @@ module mojo_top_0 (
         shiftconst = 8'h00;
         
         case (M_num_q[16+2-:3])
-          1'h0: begin
+          3'h0: begin
             shiftconst = M_num_q[8+7-:8];
           end
-          1'h1: begin
+          3'h1: begin
             shiftconst[0+6-:7] = M_num_q[9+6-:7];
           end
-          4'ha: begin
+          3'h2: begin
             shiftconst[0+5-:6] = M_num_q[10+5-:6];
           end
-          4'hb: begin
+          3'h3: begin
             shiftconst[0+4-:5] = M_num_q[11+4-:5];
           end
-          7'h64: begin
+          3'h4: begin
             shiftconst[0+3-:4] = M_num_q[12+3-:4];
           end
-          7'h65: begin
+          3'h5: begin
             shiftconst[0+2-:3] = M_num_q[13+2-:3];
           end
-          7'h6e: begin
+          3'h6: begin
             shiftconst[0+1-:2] = M_num_q[14+1-:2];
           end
-          7'h6f: begin
+          3'h7: begin
             shiftconst[0+0-:1] = M_num_q[15+0-:1];
           end
         endcase
@@ -363,34 +373,34 @@ module mojo_top_0 (
       SRA_testState: begin
         
         case (M_num_q[16+2-:3])
-          1'h0: begin
+          3'h0: begin
             shiftconst = M_num_q[8+7-:8];
           end
-          1'h1: begin
+          3'h1: begin
             shiftconst[7+0-:1] = M_num_q[15+0-:1];
             shiftconst[0+6-:7] = M_num_q[9+6-:7];
           end
-          4'ha: begin
+          3'h2: begin
             shiftconst[6+1-:2] = {2'h2{M_num_q[15+0-:1]}};
             shiftconst[0+5-:6] = M_num_q[10+5-:6];
           end
-          4'hb: begin
+          3'h3: begin
             shiftconst[5+2-:3] = {2'h3{M_num_q[15+0-:1]}};
             shiftconst[0+4-:5] = M_num_q[11+4-:5];
           end
-          7'h64: begin
+          3'h4: begin
             shiftconst[4+3-:4] = {3'h4{M_num_q[15+0-:1]}};
             shiftconst[0+3-:4] = M_num_q[12+3-:4];
           end
-          7'h65: begin
+          3'h5: begin
             shiftconst[3+4-:5] = {3'h5{M_num_q[15+0-:1]}};
             shiftconst[0+2-:3] = M_num_q[13+2-:3];
           end
-          7'h6e: begin
+          3'h6: begin
             shiftconst[2+5-:6] = {3'h6{M_num_q[15+0-:1]}};
             shiftconst[0+1-:2] = M_num_q[14+1-:2];
           end
-          7'h6f: begin
+          3'h7: begin
             shiftconst[1+6-:7] = {3'h7{M_num_q[15+0-:1]}};
             shiftconst[0+0-:1] = M_num_q[15+0-:1];
           end
@@ -403,17 +413,17 @@ module mojo_top_0 (
           M_errRes_d = M_alu_out;
         end else begin
           if (M_num_q[19+0-:1] == 1'h1) begin
-            M_testState_d = SRA_testState;
+            M_testState_d = CMPEQ_testState;
             rst = 1'h1;
           end
         end
       end
       CMPEQ_testState: begin
-        if (!(M_alu_out & (M_num_q[8+7-:8] == M_num_q[16+7-:8]))) begin
+        if (!(M_alu_out[0+0-:1] == (M_num_q[8+7-:8] == M_num_q[16+7-:8]))) begin
           M_testState_d = ERROR_testState;
           M_errorA_d = M_num_q[8+7-:8];
           M_errorB_d = M_num_q[16+7-:8];
-          M_errorFN_d = 8'h31;
+          M_errorFN_d = 8'h33;
           M_errRes_d = M_alu_out;
         end else begin
           if (M_num_q[24+0-:1] == 1'h1 & M_num_q[0+23-:24] == 1'h0) begin
@@ -423,7 +433,17 @@ module mojo_top_0 (
         end
       end
       CMPLT_testState: begin
-        if (!(M_alu_out & (M_num_q[8+7-:8] < M_num_q[16+7-:8]))) begin
+        if (M_num_q[15+0-:1]) begin
+          comA = ~M_num_q[8+6-:7];
+        end else begin
+          comA = M_num_q[8+6-:7];
+        end
+        if (M_num_q[23+0-:1]) begin
+          comA = ~M_num_q[16+6-:7];
+        end else begin
+          comA = M_num_q[16+6-:7];
+        end
+        if (!(M_alu_out[0+0-:1] == ((M_num_q[15+0-:1] > M_num_q[23+0-:1]) | ((({3'h7{M_num_q[15+0-:1]}} ^ M_num_q[8+6-:7]) < ({3'h7{M_num_q[15+0-:1]}} ^ M_num_q[16+6-:7])))))) begin
           M_testState_d = ERROR_testState;
           M_errorA_d = M_num_q[8+7-:8];
           M_errorB_d = M_num_q[16+7-:8];
@@ -437,7 +457,7 @@ module mojo_top_0 (
         end
       end
       CMPLE_testState: begin
-        if (!(M_alu_out & (M_num_q[8+7-:8] <= M_num_q[16+7-:8]))) begin
+        if (!(M_alu_out[0+0-:1] == (M_num_q[8+7-:8] <= M_num_q[16+7-:8]))) begin
           M_testState_d = ERROR_testState;
           M_errorA_d = M_num_q[8+7-:8];
           M_errorB_d = M_num_q[16+7-:8];
@@ -487,23 +507,9 @@ module mojo_top_0 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_num_q <= 1'h0;
+      M_errorA_q <= 1'h0;
     end else begin
-      M_num_q <= M_num_d;
-    end
-  end
-  
-  
-  always @(posedge clk) begin
-    M_testState_q <= M_testState_d;
-  end
-  
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_errRes_q <= 1'h0;
-    end else begin
-      M_errRes_q <= M_errRes_d;
+      M_errorA_q <= M_errorA_d;
     end
   end
   
@@ -519,6 +525,20 @@ module mojo_top_0 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
+      M_num_q <= 1'h0;
+    end else begin
+      M_num_q <= M_num_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    M_testState_q <= M_testState_d;
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
       M_errorFN_q <= 1'h0;
     end else begin
       M_errorFN_q <= M_errorFN_d;
@@ -528,9 +548,9 @@ module mojo_top_0 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_errorA_q <= 1'h0;
+      M_errRes_q <= 1'h0;
     end else begin
-      M_errorA_q <= M_errorA_d;
+      M_errRes_q <= M_errRes_d;
     end
   end
   

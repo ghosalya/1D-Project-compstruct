@@ -43,6 +43,8 @@ module mojo_top (
   //autoTesting
   sig shiftconst[8];
   sig out[8];
+  sig comA[8];
+  sig comB[8];
   fsm testState (.clk(clk)) = {IDLE, ADD, SUB, AND, OR, XOR, A, SHL, SHR, SRA, CMPEQ, CMPLT, CMPLE, ERROR, DONE};
   dff num[25] (.clk(clk), .rst(rst));
  
@@ -227,31 +229,40 @@ module mojo_top (
         }
         
       testState.SHL:
-      shiftconst = 8b00000000;
+      //shiftconst = 8b00000000;
       case(num.q[18:16]) {
-            000:
+            3b000:
               shiftconst = num.q[15:8];
             
-            001:
+            3b001:
               shiftconst[7:1] = num.q[14:8];
+              shiftconst[0] = 0;
             
-            010:
+            3b010:
               shiftconst[7:2] = num.q[13:8];
+              shiftconst[1:0] = 2x{0};
             
-            011:
+            
+            3b011:
               shiftconst[7:3] = num.q[12:8];
             
-            100:
+              shiftconst[2:0] = 3x{0};
+            
+            3b100:
               shiftconst[7:4] = num.q[11:8];
+              shiftconst[3:0] = 4x{0};
             
-            101:
+            3b101:
               shiftconst[7:5] = num.q[10:8];
+              shiftconst[4:0] = 5x{0};
             
-            110:
+            3b110:
               shiftconst[7:6] = num.q[9:8];
+              shiftconst[5:0] = 6x{0};
             
-            111:
-              shiftconst[7] = num.q[15:8];
+            3b111:
+              shiftconst[7] = num.q[8];
+              shiftconst[6:0] = 7x{0};
             
           }
 
@@ -271,28 +282,28 @@ module mojo_top (
       testState.SHR:
           shiftconst = 8b00000000;
           case(num.q[18:16]) {
-            000:
+            3b000:
               shiftconst = num.q[15:8];
             
-            001:
+            3b001:
               shiftconst[6:0] = num.q[15:9];
             
-            010:
+            3b010:
               shiftconst[5:0] = num.q[15:10];
             
-            011:
+            3b011:
               shiftconst[4:0] = num.q[15:11];
             
-            100:
+            3b100:
               shiftconst[3:0] = num.q[15:12];
             
-            101:
+            3b101:
               shiftconst[2:0] = num.q[15:13];
             
-            110:
+            3b110:
               shiftconst[1:0] = num.q[15:14];
             
-            111:
+            3b111:
               shiftconst[0] = num.q[15];
             
           }
@@ -309,34 +320,34 @@ module mojo_top (
         
       testState.SRA:
           case(num.q[18:16]) {
-            000:
+            3b000:
               shiftconst = num.q[15:8];
             
-            001:
+            3b001:
               shiftconst[7] = num.q[15];
               shiftconst[6:0] = num.q[15:9];
             
-            010:
+            3b010:
               shiftconst[7:6] = 2x{num.q[15]};
               shiftconst[5:0] = num.q[15:10];
             
-            011:
+            3b011:
               shiftconst[7:5] = 3x{num.q[15]};
               shiftconst[4:0] = num.q[15:11];
             
-            100:
+            3b100:
               shiftconst[7:4] = 4x{num.q[15]};
               shiftconst[3:0] = num.q[15:12];
             
-            101:
+            3b101:
               shiftconst[7:3] = 5x{num.q[15]};
               shiftconst[2:0] = num.q[15:13];
             
-            110:
+            3b110:
               shiftconst[7:2] = 6x{num.q[15]};
               shiftconst[1:0] = num.q[15:14];
             
-            111:
+            3b111:
               shiftconst[7:1] = 7x{num.q[15]};
               shiftconst[0] = num.q[15];
             
@@ -350,16 +361,16 @@ module mojo_top (
               errorFN.d = 8b00100011;
           errRes.d = alu.out;
         } else if (num.q[19]==1) {
-              testState.d = testState.SRA;
+              testState.d = testState.CMPEQ;
               rst=1;
         }
         
       testState.CMPEQ:
-          if (!(alu.out & (num.q[15:8] == num.q[23:16]))) {
+          if (!(alu.out[0] == (num.q[15:8] == num.q[23:16]))) {
               testState.d = testState.ERROR;
               errorA.d = num.q[15:8];
               errorB.d = num.q[23:16];
-              errorFN.d = 8b00110001;
+              errorFN.d = 8b00110011;
           errRes.d = alu.out;
           } else if (num.q[24] == 1 & num.q[23:0] == 0) {
               testState.d = testState.CMPLT;
@@ -367,7 +378,20 @@ module mojo_top (
         }
         
       testState.CMPLT:
-          if (!(alu.out & (num.q[15:8] < num.q[23:16]))) {
+          if (num.q[15]) {
+            comA = ~num.q[14:8];
+          } else {
+            comA = num.q[14:8];
+          }
+        
+        
+          if (num.q[23]) {
+            comB = ~num.q[22:16];
+          } else {
+            comB = num.q[22:16];
+          }
+        
+          if (!(alu.out[0] == ((num.q[15] > num.q[23]) | (comA < comB)))) {
               testState.d = testState.ERROR;
               errorA.d = num.q[15:8];
               errorB.d = num.q[23:16];
@@ -379,7 +403,7 @@ module mojo_top (
         }
         
       testState.CMPLE:
-          if (!(alu.out & (num.q[15:8] <= num.q[23:16]))) {
+          if (!(alu.out[0] == (num.q[15:8] <= num.q[23:16]))) {
               testState.d = testState.ERROR;
               errorA.d = num.q[15:8];
               errorB.d = num.q[23:16];
