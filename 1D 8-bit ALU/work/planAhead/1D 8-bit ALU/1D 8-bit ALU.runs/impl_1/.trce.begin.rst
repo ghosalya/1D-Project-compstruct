@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="trce" Owner="Kygrykhon" Host="KYGRYKHON-PC" Pid="103128">
+    <Process Command="trce" Owner="Kygrykhon" Host="KYGRYKHON-PC" Pid="85868">
     </Process>
 </ProcessHandle>

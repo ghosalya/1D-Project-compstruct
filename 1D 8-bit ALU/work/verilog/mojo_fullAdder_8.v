@@ -4,20 +4,16 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-/*
-   Parameters:
-     WIDTH = DIGIT_BITS
-*/
-module decoder_8 (
-    input [1:0] in,
-    output reg [3:0] out
+module mojo_fullAdder_8 (
+    input [2:0] a,
+    output reg sum,
+    output reg carry
   );
   
-  localparam WIDTH = 2'h2;
   
   
   always @* begin
-    out = 1'h0;
-    out[(in)*1+0-:1] = 1'h1;
+    sum = (a[0+0-:1] ^ a[1+0-:1]) ^ (a[2+0-:1]);
+    carry = (((a[0+0-:1] ^ a[1+0-:1]) & a[2+0-:1]) | (a[0+0-:1] & a[1+0-:1]));
   end
 endmodule

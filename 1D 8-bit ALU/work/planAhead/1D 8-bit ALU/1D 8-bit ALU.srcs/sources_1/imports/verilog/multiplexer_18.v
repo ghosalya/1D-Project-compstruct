@@ -4,16 +4,15 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module mojo_fullAdder_9 (
-    input [2:0] a,
-    output reg sum,
-    output reg carry
+module multiplexer4_18 (
+    input [3:0] a,
+    input [1:0] sel,
+    output reg out
   );
   
   
   
   always @* begin
-    sum = (a[0+0-:1] ^ a[1+0-:1]) ^ (a[2+0-:1]);
-    carry = (((a[0+0-:1] ^ a[1+0-:1]) & a[2+0-:1]) | (a[0+0-:1] & a[1+0-:1]));
+    out = a[(sel)*1+0-:1];
   end
 endmodule

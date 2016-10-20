@@ -13,6 +13,7 @@ module converter (
   var ones;
   
   always {
+    // binary to decimal conversion
     binarySum = 0;
     for (i=0;i<8;i++){
       currentDigit = binaryInput[i];
@@ -20,9 +21,19 @@ module converter (
       for (j=0;j<i;j++){
         multiplier = multiplier*2;
       }
-      binarySum = binarySum + multiplier*currentDigit;
+      
+      if (i==7){
+        binarySum = binarySum - multiplier*currentDigit;
+      } else {
+        binarySum = binarySum + multiplier*currentDigit;
+      }
     }
    
+    // decimal number to separate digits conversion
+    if (binarySum<0){
+      binarySum = binarySum*(-1);
+    }
+    
     if (binarySum>99){
       hundreds = binarySum/100;
       binarySum = binarySum - hundreds*100;

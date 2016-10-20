@@ -4,15 +4,15 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module multiplexer4_17 (
-    input [3:0] a,
+module mux4_8bit_3 (
+    input [31:0] a,
     input [1:0] sel,
-    output reg out
+    output reg [7:0] out
   );
   
   
   
   always @* begin
-    out = a[(sel)*1+0-:1];
+    out = a[(sel)*8+7-:8];
   end
 endmodule

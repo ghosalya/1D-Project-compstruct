@@ -1,0 +1,10 @@
+module mux4_8bit (
+    input a[4][8],
+    input sel[2],
+    output out[8]
+  ) {
+
+  always {
+    out = a[sel];
+  }
+}
