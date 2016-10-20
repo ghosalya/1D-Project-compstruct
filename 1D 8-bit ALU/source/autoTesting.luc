@@ -6,6 +6,7 @@ module autoTesting (
   ) {
   
   sig resetter;
+  sig shiftconst;
   alu8 alu;
   fsm testState (.clk(clk)) = {IDLE, ADD, SUB, AND, OR, XOR, A, SHL, SHR, SRA, CMPEQ, CMPLT, CMPLE, ERROR};
   dff num[17] (.clk(clk), .rst(resetter));
@@ -118,10 +119,20 @@ module autoTesting (
         }
         
       testState.SHL:
-          alu.alufn = 100000;
+
+          if (alu.out != num.q[7:0]*(num.q[8] + 2*num.q[9] + 4*num.q[10])) {
+            testState.d = testState.ERROR;
+        } else if (num.q == 10000000000000000) {
+              testState.d = testState.SHR;
+        }
+        
         
       testState.SHR:
-          alu.alufn = 100001;
+          if (alu.out != num.q[7:0]/(num.q[8] + 2*num.q[9] + 4*num.q[10])) {
+            testState.d = testState.ERROR;
+        } else if (num.q == 10000000000000000) {
+              testState.d = testState.SRA;
+        }
         
       testState.SRA:
           alu.alufn = 100011;
