@@ -98,12 +98,12 @@ WARNING:Xst:647 - Input <spi_mosi> is never used. This port will be preserved an
 WARNING:Xst:647 - Input <spi_sck> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_tx> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 8-bit register for signal <M_errorB_q>.
-    Found 25-bit register for signal <M_num_q>.
     Found 4-bit register for signal <M_testState_q>.
-    Found 8-bit register for signal <M_errorFN_q>.
     Found 8-bit register for signal <M_errRes_q>.
+    Found 25-bit register for signal <M_num_q>.
+    Found 8-bit register for signal <M_errorFN_q>.
     Found 8-bit register for signal <M_errorA_q>.
+    Found 8-bit register for signal <M_errorB_q>.
     Found finite state machine <FSM_0> for signal <M_testState_q>.
     -----------------------------------------------------------------------
     | States             | 15                                             |
@@ -117,7 +117,7 @@ WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved
     -----------------------------------------------------------------------
     Found 8-bit subtractor for signal <M_num_q[15]_M_num_q[23]_sub_16_OUT> created at line 214.
     Found 8-bit adder for signal <M_num_q[15]_M_num_q[23]_add_5_OUT> created at line 200.
-    Found 25-bit adder for signal <M_num_q[24]_GND_1_o_add_149_OUT> created at line 490.
+    Found 25-bit adder for signal <M_num_q[24]_GND_1_o_add_147_OUT> created at line 490.
     Found 8-bit 8-to-1 multiplexer for signal <M_num_q[18]_M_num_q[8]_wide_mux_64_OUT> created at line 285.
     Found 8-bit 8-to-1 multiplexer for signal <M_num_q[18]_GND_1_o_wide_mux_73_OUT> created at line 334.
     Found 1-bit 5-to-1 multiplexer for signal <M_num_q[18]_M_num_q[15]_Mux_85_o> created at line 375.
@@ -140,17 +140,15 @@ WARNING:Xst:647 - Input <avr_rx_busy> is never used. This port will be preserved
     Found 8-bit comparator equal for signal <n0066> created at line 318
     Found 8-bit comparator equal for signal <n0076> created at line 360
     Found 8-bit comparator equal for signal <n0092> created at line 408
-    Found 8-bit comparator equal for signal <M_num_q[15]_M_num_q[23]_equal_98_o> created at line 422
     Found 1-bit comparator equal for signal <M_alu_out[0]_M_num_q[15]_equal_99_o> created at line 422
-    Found 1-bit comparator greater for signal <M_num_q[23]_M_num_q[15]_LessThan_112_o> created at line 446
-    Found 7-bit comparator greater for signal <M_num_q[15]_M_num_q[15]_LessThan_115_o> created at line 446
-    Found 1-bit comparator equal for signal <M_alu_out[0]_M_num_q[23]_equal_116_o> created at line 446
-    Found 8-bit comparator lessequal for signal <n0127> created at line 460
-    Found 1-bit comparator equal for signal <M_alu_out[0]_M_num_q[15]_equal_126_o> created at line 460
+    Found 1-bit comparator equal for signal <M_alu_out[0]_M_num_q[15]_equal_113_o> created at line 446
+    Found 8-bit comparator equal for signal <M_num_q[15]_M_num_q[23]_equal_122_o> created at line 460
+    Found 8-bit comparator greater for signal <M_num_q[15]_M_num_q[23]_LessThan_123_o> created at line 460
+    Found 1-bit comparator equal for signal <M_alu_out[0]_M_num_q[15]_equal_124_o> created at line 460
     Summary:
 	inferred   3 Adder/Subtractor(s).
 	inferred  57 D-type flip-flop(s).
-	inferred  16 Comparator(s).
+	inferred  14 Comparator(s).
 	inferred  41 Multiplexer(s).
 	inferred   6 Tristate(s).
 	inferred   1 Finite State Machine(s).
@@ -464,9 +462,8 @@ Macro Statistics
  25-bit register                                       : 1
  4-bit register                                        : 1
  8-bit register                                        : 1
-# Comparators                                          : 84
+# Comparators                                          : 82
  1-bit comparator equal                                : 3
- 1-bit comparator greater                              : 1
  32-bit comparator greater                             : 2
  32-bit comparator lessequal                           : 55
  33-bit comparator lessequal                           : 2
@@ -476,9 +473,8 @@ Macro Statistics
  37-bit comparator lessequal                           : 1
  38-bit comparator lessequal                           : 1
  39-bit comparator lessequal                           : 1
- 7-bit comparator greater                              : 1
  8-bit comparator equal                                : 10
- 8-bit comparator lessequal                            : 1
+ 8-bit comparator greater                              : 1
 # Multiplexers                                         : 1914
  1-bit 16-to-1 multiplexer                             : 1
  1-bit 2-to-1 multiplexer                              : 1879
@@ -497,8 +493,7 @@ Macro Statistics
  1-bit tristate buffer                                 : 6
 # FSMs                                                 : 1
 # Xors                                                 : 28
- 1-bit xor2                                            : 25
- 7-bit xor2                                            : 2
+ 1-bit xor2                                            : 27
  8-bit xor2                                            : 1
 
 =========================================================================
@@ -559,9 +554,8 @@ Macro Statistics
  25-bit up counter                                     : 1
 # Registers                                            : 36
  Flip-Flops                                            : 36
-# Comparators                                          : 84
+# Comparators                                          : 82
  1-bit comparator equal                                : 3
- 1-bit comparator greater                              : 1
  32-bit comparator greater                             : 2
  32-bit comparator lessequal                           : 55
  33-bit comparator lessequal                           : 2
@@ -571,9 +565,8 @@ Macro Statistics
  37-bit comparator lessequal                           : 1
  38-bit comparator lessequal                           : 1
  39-bit comparator lessequal                           : 1
- 7-bit comparator greater                              : 1
  8-bit comparator equal                                : 10
- 8-bit comparator lessequal                            : 1
+ 8-bit comparator greater                              : 1
 # Multiplexers                                         : 1913
  1-bit 16-to-1 multiplexer                             : 1
  1-bit 2-to-1 multiplexer                              : 1879
@@ -589,8 +582,7 @@ Macro Statistics
  7-bit shifter logical right                           : 9
 # FSMs                                                 : 1
 # Xors                                                 : 28
- 1-bit xor2                                            : 25
- 7-bit xor2                                            : 2
+ 1-bit xor2                                            : 27
  8-bit xor2                                            : 1
 
 =========================================================================
@@ -634,9 +626,9 @@ Optimizing unit <div_32u_4u> ...
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 52.
+Found area constraint ratio of 100 (+ 0) on block mojo_top_0, actual ratio is 51.
+FlipFlop M_num_q_16 has been replicated 1 time(s)
 FlipFlop M_num_q_18 has been replicated 1 time(s)
-FlipFlop M_num_q_19 has been replicated 1 time(s)
 
 Final Macro Processing ...
 
@@ -684,9 +676,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 13.708ns (Maximum Frequency: 72.950MHz)
-   Minimum input arrival time before clock: 15.194ns
-   Maximum output required time after clock: 260.226ns
-   Maximum combinational path delay: 261.713ns
+   Minimum period: 13.806ns (Maximum Frequency: 72.432MHz)
+   Minimum input arrival time before clock: 15.418ns
+   Maximum output required time after clock: 260.324ns
+   Maximum combinational path delay: 261.936ns
 
 =========================================================================

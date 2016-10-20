@@ -439,11 +439,11 @@ module mojo_top_0 (
           comA = M_num_q[8+6-:7];
         end
         if (M_num_q[23+0-:1]) begin
-          comA = ~M_num_q[16+6-:7];
+          comB = ~M_num_q[16+6-:7];
         end else begin
-          comA = M_num_q[16+6-:7];
+          comB = M_num_q[16+6-:7];
         end
-        if (!(M_alu_out[0+0-:1] == ((M_num_q[15+0-:1] > M_num_q[23+0-:1]) | ((({3'h7{M_num_q[15+0-:1]}} ^ M_num_q[8+6-:7]) < ({3'h7{M_num_q[15+0-:1]}} ^ M_num_q[16+6-:7])))))) begin
+        if (!(M_alu_out[0+0-:1] == ((M_num_q[15+0-:1] ^ M_num_q[23+0-:1]) ^ (M_num_q[8+7-:8] < M_num_q[16+7-:8])))) begin
           M_testState_d = ERROR_testState;
           M_errorA_d = M_num_q[8+7-:8];
           M_errorB_d = M_num_q[16+7-:8];
@@ -457,7 +457,7 @@ module mojo_top_0 (
         end
       end
       CMPLE_testState: begin
-        if (!(M_alu_out[0+0-:1] == (M_num_q[8+7-:8] <= M_num_q[16+7-:8]))) begin
+        if (!(M_alu_out[0+0-:1] == ((M_num_q[8+7-:8] == M_num_q[16+7-:8]) | ((M_num_q[15+0-:1] ^ M_num_q[23+0-:1]) ^ (M_num_q[8+7-:8] < M_num_q[16+7-:8]))))) begin
           M_testState_d = ERROR_testState;
           M_errorA_d = M_num_q[8+7-:8];
           M_errorB_d = M_num_q[16+7-:8];
@@ -507,18 +507,23 @@ module mojo_top_0 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_errorA_q <= 1'h0;
+      M_errorB_q <= 1'h0;
     end else begin
-      M_errorA_q <= M_errorA_d;
+      M_errorB_q <= M_errorB_d;
     end
   end
   
   
   always @(posedge clk) begin
+    M_testState_q <= M_testState_d;
+  end
+  
+  
+  always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_errorB_q <= 1'h0;
+      M_errRes_q <= 1'h0;
     end else begin
-      M_errorB_q <= M_errorB_d;
+      M_errRes_q <= M_errRes_d;
     end
   end
   
@@ -533,11 +538,6 @@ module mojo_top_0 (
   
   
   always @(posedge clk) begin
-    M_testState_q <= M_testState_d;
-  end
-  
-  
-  always @(posedge clk) begin
     if (rst == 1'b1) begin
       M_errorFN_q <= 1'h0;
     end else begin
@@ -548,9 +548,9 @@ module mojo_top_0 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_errRes_q <= 1'h0;
+      M_errorA_q <= 1'h0;
     end else begin
-      M_errRes_q <= M_errRes_d;
+      M_errorA_q <= M_errorA_d;
     end
   end
   

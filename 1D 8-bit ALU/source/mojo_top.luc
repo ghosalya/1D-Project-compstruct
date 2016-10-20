@@ -391,7 +391,7 @@ module mojo_top (
             comB = num.q[22:16];
           }
         
-          if (!(alu.out[0] == ((num.q[15] > num.q[23]) | (comA < comB)))) {
+          if (!(alu.out[0] == ((num.q[15]^num.q[23])^(num.q[15:8] < num.q[23:16])))) {//((num.q[15] > num.q[23]) | (num.q[23] ^ (comA < comB))))) { // 
               testState.d = testState.ERROR;
               errorA.d = num.q[15:8];
               errorB.d = num.q[23:16];
@@ -403,7 +403,7 @@ module mojo_top (
         }
         
       testState.CMPLE:
-          if (!(alu.out[0] == (num.q[15:8] <= num.q[23:16]))) {
+          if (!(alu.out[0] == ((num.q[15:8] == num.q[23:16]) | ((num.q[15]^num.q[23])^(num.q[15:8] < num.q[23:16]))))) {
               testState.d = testState.ERROR;
               errorA.d = num.q[15:8];
               errorB.d = num.q[23:16];
